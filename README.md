@@ -14,7 +14,7 @@ Open http://localhost:5173.
 
 ## Configure contact and social profiles
 
-Edit `dist/config.js`. `contactEmail` enables a prefilled email draft; visitors send that draft themselves. Without an inbox, the form only downloads or copies a brief and explains this clearly. No backend, database, analytics or tracking pixels are included. Never put private credentials in public configuration.
+The project form now uses a direct inquiry flow. Follow [INQUIRY-SETUP.md](INQUIRY-SETUP.md) to connect Formspree, configure validation and spam filtering, and verify delivery. In `dist/config.js`, `inquiryEndpoint` enables submission and `contactEmail` provides a direct-email fallback. Until the endpoint is configured, sending stays disabled. No live endpoint has been supplied yet. Never put private credentials in public configuration.
 
 Use full HTTPS social profile URLs. Empty profiles remain Coming soon text.
 
@@ -22,7 +22,9 @@ Use full HTTPS social profile URLs. Empty profiles remain Coming soon text.
 
 - `dist/index.html`: homepage and dialogs.
 - `dist/styles.css`, `agency.css`, `refinement.css`: shared, agency and latest visual styling.
-- `dist/script.js`: navigation, project dialogs, services, motion controls and briefs.
+- `dist/script.js`: navigation, project dialogs, services and motion controls.
+- `dist/inquiry.js`: inquiry validation, submission, success and retry states.
+- `scripts/test-inquiry.mjs`: local submission behavior tests with mocked responses.
 - `scripts/create-policy-pages.mjs`: generates policy pages; run with modern Node.js after changing policy copy or the shared footer.
 - `WEBSITE-HANDOFF.md`: functionality and remaining owner inputs.
 - `NAMING-NOTES.md`: preliminary replacement-name research.

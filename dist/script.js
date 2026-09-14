@@ -82,36 +82,3 @@ document.querySelectorAll('dialog').forEach(dialog => {
   dialog.addEventListener('click', event => { if (event.target === dialog) { const rect = dialog.getBoundingClientRect(); if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) dialog.close(); } });
   dialog.addEventListener('close', () => { if (!document.querySelector('dialog[open]') && lastTrigger?.isConnected) { if (!lastTrigger.closest('dialog:not([open])')) lastTrigger.focus(); else document.querySelector('.nav-contact')?.focus(); } });
 });
-const form = document.getElementById('brief-form');
-if (form) {
-  const briefText = () => { const values = new FormData(form); return `ARCLUME STUDIO — PROJECT BRIEF\n\nName: ${values.get('name')}\nEmail: ${values.get('email')}\nBusiness: ${values.get('brand')}\nService: ${values.get('service')}\n\nThe idea\n${values.get('idea')}\n`; };
-  const copyButton = document.createElement('button'); copyButton.type = 'button'; copyButton.className = 'copy-brief'; copyButton.textContent = 'Copy brief';
-  form.querySelector('.form-submit').after(copyButton);
-  copyButton.addEventListener('click', async () => {
-    if (!form.reportValidity()) return;
-    try { await navigator.clipboard.writeText(briefText()); document.getElementById('form-status').textContent = 'Brief copied. Paste it into your message when you are ready to share it.'; }
-    catch { document.getElementById('form-status').textContent = 'Clipboard access is unavailable. Use the main button to save or open your brief instead.'; }
-  });
-  if (studioEmail) {
-    form.elements.name.required = true; form.elements.email.required = true; form.elements.brand.required = true;
-    document.getElementById('contact-dialog-title').textContent = 'Tell us a little.';
-    document.getElementById('contact-intro').textContent = 'A business, a launch, or the beginning of an idea.';
-    form.querySelector('.form-submit').textContent = 'Continue to email ↗';
-    document.getElementById('contact-note').replaceChildren('Opens your email app with your project details. Nothing is sent until you send the email. ');
-    const privacyLink = document.createElement('a'); privacyLink.href = 'privacy.html'; privacyLink.textContent = 'Privacy policy'; document.getElementById('contact-note').append(privacyLink);
-  }
-  form.addEventListener('submit', event => {
-    event.preventDefault(); const values = new FormData(form);
-    const text = briefText();
-    const status = document.getElementById('form-status');
-    if (studioEmail) {
-      window.location.href = `mailto:${studioEmail}?subject=${encodeURIComponent('Project inquiry — ' + values.get('brand'))}&body=${encodeURIComponent(text)}`;
-      status.textContent = 'Your email app should open with a draft. Send it there to contact us. If it does not open, email ' + studioEmail + ' directly.';
-    } else {
-      const blob = new Blob([text], { type: 'text/plain;charset=utf-8' }); const url = URL.createObjectURL(blob); const link = document.createElement('a');
-      link.href = url; link.download = 'arclume-project-brief.txt'; document.body.append(link); link.click(); link.remove();
-      setTimeout(() => URL.revokeObjectURL(url), 1000);
-      status.textContent = 'Your brief has been downloaded. It has not been sent to Arclume Studio.';
-    }
-  });
-}

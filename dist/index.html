@@ -11,7 +11,8 @@
   <link rel="stylesheet" href="agency.css">
   <link rel="stylesheet" href="refinement.css">
   <script src="config.js" defer></script>
-  <script src="script.js?v=3" defer></script>
+  <script src="script.js?v=4" defer></script>
+  <script src="inquiry.js" defer></script>
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
@@ -68,6 +69,34 @@
   </main>
   <footer class="site-footer"><div class="footer-main"><div class="footer-brand"><a class="wordmark" href="#">arclume<small>STUDIO</small></a><p>Cinematic stories.<br>Creative for your next chapter.</p></div><div class="footer-column"><h2>Explore</h2><a href="#work">Work</a><a href="#services">Services</a><a href="#studio">About the agency</a><button data-contact>Start a project</button></div><div class="footer-column"><h2>Follow along</h2><span data-social="instagram">Instagram <small>Coming soon</small></span><span data-social="facebook">Facebook <small>Coming soon</small></span><span data-social="linkedin">LinkedIn <small>Coming soon</small></span></div><div class="footer-column"><h2>The details</h2><a href="privacy.html">Privacy policy</a><a href="terms.html">Terms of service</a><a href="cookies.html">Cookie notice</a><a href="accessibility.html">Accessibility</a></div></div><div class="footer-bottom"><span>© <span id="year">2026</span> Arclume Studio</span><span>Independent vision. Lasting impression.</span><a href="#" aria-label="Back to top">Back to top ↑</a></div></footer>
   <dialog id="project-dialog" class="project-dialog" aria-labelledby="project-dialog-title"><button class="dialog-close" data-close aria-label="Close project">×</button><img id="project-detail-image" src="assets/yellow-satin.png" alt="In Good Form studio concept" width="1672" height="941"><div class="project-dialog-copy"><p class="eyebrow">ARCLUME ORIGINAL / STUDIO CONCEPT</p><h2 id="project-dialog-title">In good form.</h2><p id="project-detail-description">A study in colour, texture and movement. One expressive material becomes the starting point for a distinctive visual world.</p><div class="project-credits"><span>DISCIPLINE<br><strong id="project-detail-discipline">Brand art direction</strong></span><span>FORMAT<br><strong>Concept still / Visual study</strong></span></div><button class="pill" data-contact>Create something for your brand ↗</button></div></dialog>
-  <dialog id="contact-dialog" aria-labelledby="contact-dialog-title"><button class="dialog-close" data-close aria-label="Close project inquiry">×</button><p class="eyebrow">YOUR NEXT GREAT IDEA STARTS HERE</p><h2 id="contact-dialog-title">Build your brief.</h2><p class="dialog-intro" id="contact-intro">Capture your idea and save a copy to share later. This preview does not send inquiries to the studio.</p><form id="brief-form" method="dialog"><label>Your name<input name="name" autocomplete="name" maxlength="100" placeholder="Name"></label><label>Email address<input name="email" type="email" autocomplete="email" maxlength="254" placeholder="you@yourbrand.com"></label><label>Business or website<input name="brand" maxlength="200" placeholder="What are you working on?"></label><label>What do you have in mind?<select name="service"><option>Let’s figure it out together</option><option>Cinematic or story-driven ad</option><option>Social media marketing</option><option>Brand or campaign direction</option><option>Content production</option></select></label><label>The idea<textarea name="idea" rows="3" maxlength="4000" required placeholder="Your business, your audience, and what you’d love to make."></textarea></label><button class="pill form-submit" type="submit">Save brief to my device <span aria-hidden="true">↓</span></button><p id="contact-note" class="form-note">Your answers stay in this browser until you download them. Nothing is sent to Arclume. <a href="privacy.html">Privacy policy</a></p><p id="form-status" role="status"></p></form></dialog>
+  <dialog id="contact-dialog" aria-labelledby="contact-dialog-title">
+    <button class="dialog-close" data-close aria-label="Close project inquiry">×</button>
+    <p class="eyebrow">YOUR NEXT GREAT IDEA STARTS HERE</p>
+    <h2 id="contact-dialog-title">Let’s hear your idea.</h2>
+    <p class="dialog-intro" id="contact-intro">Tell us what you have in mind. We’ll take it from there.</p>
+    <form id="brief-form" method="dialog" aria-describedby="contact-note">
+      <fieldset class="inquiry-fields">
+        <legend class="sr-only">Your project inquiry</legend>
+        <div class="inquiry-row">
+          <label>Your name<input name="name" autocomplete="name" maxlength="100" required placeholder="Name"></label>
+          <label>Email address<input name="email" type="email" autocomplete="email" maxlength="254" required placeholder="you@yourbrand.com"></label>
+        </div>
+        <label>Business or website (optional)<input name="brand" maxlength="200" placeholder="Your business name or website"></label>
+        <label>What can we help with?<select name="service"><option>Let’s figure it out together</option><option>Cinematic or story-driven ad</option><option>Social media marketing</option><option>Brand or campaign direction</option><option>Content production</option></select></label>
+        <label>Your project idea<textarea name="idea" rows="3" minlength="10" maxlength="4000" required placeholder="What are you creating, and who is it for?"></textarea></label>
+        <div class="inquiry-honeypot" aria-hidden="true"><label>Leave this blank<input name="_gotcha" tabindex="-1" autocomplete="off"></label></div>
+      </fieldset>
+      <button class="pill form-submit" type="submit" disabled>Send inquiry ↗</button>
+      <p id="contact-note" class="form-note">We’ll use your details to respond to your project inquiry. No newsletter signup. <a href="privacy.html">Privacy policy</a></p>
+      <p id="form-status" role="status" aria-live="polite" aria-atomic="true"></p>
+      <noscript><p class="form-note">Please enable JavaScript to use the inquiry form.</p></noscript>
+    </form>
+    <div id="inquiry-success" hidden>
+      <h3 id="inquiry-success-title" tabindex="-1">Thanks—your inquiry has been received.</h3>
+      <p>We’ll review your project details and reply to the email address you provided.</p>
+      <button class="text-link" id="new-inquiry" type="button">Start another inquiry ↗</button>
+    </div>
+    <p id="inquiry-email" class="form-note" hidden></p>
+  </dialog>
 </body>
 </html>

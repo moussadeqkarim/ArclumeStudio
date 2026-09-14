@@ -1,5 +1,9 @@
 # Arclume Studio — website handoff
 
+## September 14 inquiry update — current behavior
+
+This update supersedes the draft-download and email-draft descriptions below. Save and Copy have been replaced with Send inquiry. Name, email and project idea are required; business is optional. The frontend supports Formspree submission, pending state, confirmation after acceptance, and retries that preserve answers. The endpoint and receiving email are still unset, so sending is disabled in the preview. Provider-side validation, spam settings, inbox/dashboard delivery and retention remain to be configured and verified. See [INQUIRY-SETUP.md](INQUIRY-SETUP.md). Six mocked behavior tests pass; the form and service preselection were checked in the local browser. No live delivery test or publication has occurred.
+
 Updated September 13, 2026. This is a private design preview, not a public launch.
 
 ## September 13 refinement
