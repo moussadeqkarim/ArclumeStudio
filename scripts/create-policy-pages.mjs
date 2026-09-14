@@ -44,7 +44,7 @@ const pages = [
   {
     file: 'accessibility.html', title: 'Accessibility', intro: 'A site you can explore in the way that works for you.',
     body: `<h2>Features included</h2><p>The page includes a skip-to-content link, semantic headings, labeled form fields, visible keyboard focus, descriptive image text and responsive layouts. Service descriptions use native disclosure controls. Dialogs use the browser’s modal controls and can be closed with the Escape key.</p>
-    <h2>Motion preferences</h2><p>If your device or browser requests reduced motion, the site turns off its entrance transitions, scroll zoom and smooth scrolling. No video or audio plays automatically.</p>
+    <h2>Motion preferences</h2><p>The vertical services animation includes a pause control. If your device or browser requests reduced motion, the site shows a static service list and turns off entrance transitions, scroll zoom and smooth scrolling. No video or audio plays automatically.</p>
     <h2>Keyboard navigation</h2><p>Use Tab and Shift+Tab to move among controls. Use Enter to activate links and buttons, and Enter or Space to expand service details. Escape closes an open dialog.</p>
     <h2>Ongoing review</h2><p>These features are part of the implementation, not a claim of formal accessibility certification. Full testing with assistive technology and a range of devices remains part of the pre-launch review.</p>
     <h2>Report a barrier</h2><p>If something makes the website difficult to use, please describe the page, device and the action you were trying to complete. Do not include sensitive account information.</p>${contact}`

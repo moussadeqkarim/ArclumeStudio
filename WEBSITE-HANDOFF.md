@@ -1,6 +1,23 @@
 # Arclume Studio — website handoff
 
-Updated September 10, 2026. This is a private design preview, not a public launch.
+Updated September 13, 2026. This is a private design preview, not a public launch.
+
+## September 13 refinement
+
+- Centered hero, translucent fixed navigation, responsive mobile menu, rounded project images and more deliberate spacing.
+- Added a continuous downward services reel. Pause/Resume works immediately; reduced-motion users see a static list.
+- Added a beverage concept alongside the automotive concept to demonstrate broader creative direction.
+- Service inquiry buttons preselect the relevant service. Added FAQs and a Copy brief action alongside the existing download.
+- Checked desktop and 390px mobile layouts, menu navigation, project dialogs, service selection and local brief download. No horizontal overflow or broken images at the checked mobile width.
+- The active name remains a temporary label until a replacement is chosen. See NAMING-NOTES.md.
+
+### Still needed from you
+
+1. Receiving email address: set `contactEmail` in `dist/config.js` to enable email drafts. A visitor must send the draft in their email app. Direct website submission would require a separate form backend.
+2. Instagram, Facebook and optionally LinkedIn URLs: set the matching entries in `dist/config.js`. Blank entries remain non-clickable Coming soon labels.
+3. Final business name and legal business details for the wordmark, page titles, downloads, favicon, policies and hosting address.
+4. Real finished ads or case studies and permission to showcase them. Current imagery is clearly labeled independent concepts.
+5. Any booking link you want to use, plus confirmation of pricing, delivery promises and policies before public launch.
 
 ## What changed
 
