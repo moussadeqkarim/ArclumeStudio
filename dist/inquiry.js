@@ -18,9 +18,12 @@
     fallback.replaceChildren('Prefer email? Contact ', link, '.');
     fallback.hidden = false;
   }
-  button.disabled = !endpoint;
-  if (!endpoint) {
+  const emailFallback = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  button.disabled = !endpoint && !emailFallback;
+  if (!endpoint && !emailFallback) {
     status.textContent = 'Online inquiries are not available yet. Nothing entered here will be sent.';
+  } else if (!endpoint && emailFallback) {
+    status.textContent = 'Your email app will open with a prepared inquiry. Nothing is sent until you press Send.';
   }
   const showStatus = (message, state) => {
     status.textContent = message;
@@ -39,7 +42,7 @@
   });
   form.addEventListener('submit', async event => {
     event.preventDefault();
-    if (sending || !endpoint || !form.reportValidity()) return;
+    if (sending || (!endpoint && !emailFallback) || !form.reportValidity()) return;
     for (const name of ['name', 'email', 'idea']) {
       const field = form.elements[name];
       if (!field.value.trim()) {
@@ -55,6 +58,11 @@
     payload.set('message', form.elements.idea.value.trim());
     payload.delete('idea');
     payload.set('subject', 'New project inquiry — Arclume Studio');
+    if (!endpoint && emailFallback) {
+      window.location.href = `mailto:${email}?subject=${encodeURIComponent('New project inquiry — ' + (form.elements.brand.value.trim() || 'Arclume Studio'))}&body=${encodeURIComponent([...payload.entries()].map(([key, value]) => `${key}: ${value}`).join('\\n'))}`;
+      showStatus(`Your email app should open with a draft. Press Send to contact Arclume at ${email}.`, 'pending');
+      return;
+    }
     sending = true;
     fields.disabled = true;
     button.disabled = true;
