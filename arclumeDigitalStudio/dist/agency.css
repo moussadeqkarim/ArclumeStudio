@@ -1,0 +1,48 @@
+/* Agency-wide presentation and policy pages. */
+.wordmark small{font-size:10px;letter-spacing:2px;margin-left:16px}
+.hero h1 em{color:var(--accent)}
+.hero-image-wrap{inset:25% 0 0}
+.hero-image{object-position:center 70%}
+.studio-label{font-size:12px;letter-spacing:1.5px;line-height:1.8;color:#777}
+.project-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.project-grid .project-image{aspect-ratio:1.15}
+.project-grid .project-image>img{object-position:center 66%}
+.project-grid .project-overlay{left:27px;bottom:30px}
+.project-grid .project-overlay strong{font-size:clamp(32px,4vw,68px)}
+.project-grid .project-caption{display:block;line-height:1.6}
+.project-grid .project-caption>span+span{display:block;margin-top:4px;font-size:14px}
+.project-grid .concept-tag{font-size:12px;left:25px;top:25px}
+.project-grid .project-overlay>span{font-size:12px;letter-spacing:1.1px}
+.project-grid .project-open{top:23px;right:23px}
+.work-note{font-size:13px;max-width:760px;margin-top:30px}
+.service-list h3{min-width:0}
+.service-toggle{flex-shrink:0}
+.service-body>span,.process-grid article>span,.section-label,.eyebrow,.frame-meta{font-size:12px}
+.form-note a{text-decoration:underline;text-underline-offset:3px}
+select{width:100%;font:inherit;font-size:16px;background:#1e1e1e;color:#eee;border:1px solid #3b3b3b;border-radius:4px;padding:12px}
+select:focus-visible{outline:1px solid var(--accent)}
+.site-footer{display:block;padding:65px var(--pad) 30px}
+.footer-main{display:grid;grid-template-columns:1.6fr 1fr 1.25fr 1fr;gap:45px;padding-bottom:70px}
+.footer-brand .wordmark{font-size:31px}
+.site-footer .footer-brand p{display:block;font-size:15px;color:#999;margin-top:22px;line-height:1.7}
+.footer-column{display:flex;flex-direction:column;align-items:flex-start;gap:14px;min-width:0}
+.footer-column h2{font-size:13px;font-weight:500;color:#888;margin-bottom:10px}
+.footer-column>a,.footer-column>button,.footer-column>span{font-size:14px;line-height:1.5;font-weight:400}
+.footer-column>button{background:none;padding:0;text-align:left}
+.footer-column>a:hover,.footer-column>button:hover{color:var(--accent)}
+.footer-column>span{color:#aaa}
+.footer-column small{display:block;font-size:12px;color:#737373}
+.footer-bottom{display:flex;align-items:center;justify-content:space-between;gap:25px;border-top:1px solid var(--line);padding-top:25px;font-size:12px;color:#999}
+.footer-bottom>a{color:#ccc}
+.policy-page .header{position:relative;border-bottom:1px solid var(--line)}
+.policy-content{max-width:890px;margin:0 auto;padding:90px 35px 100px}
+.policy-content h1{font-size:clamp(44px,6vw,80px);letter-spacing:-.065em;line-height:1.1;margin:0 0 25px}
+.policy-intro{font-size:20px;color:#aaa;max-width:600px}
+.policy-date{color:#888;font-size:13px;margin-top:20px}
+.policy-review{font-size:14px;line-height:1.6;border-left:2px solid var(--accent);padding:15px 20px;background:#ffffff06;color:#bbb;margin:35px 0 50px}
+.policy-text h2{font-size:25px;letter-spacing:-.025em;margin:40px 0 15px}
+.policy-text p{font-size:16px;line-height:1.85;color:#aaa;margin:14px 0}
+.policy-text a{color:var(--accent);text-decoration:underline;text-underline-offset:4px;overflow-wrap:anywhere}
+.policy-page .site-footer{border-top:1px solid var(--line)}
+@media(max-width:1000px){.footer-main{grid-template-columns:1.5fr 1fr 1fr;gap:35px}.footer-brand{grid-column:1/-1}.project-grid .concept-tag{font-size:10px}.project-grid .project-overlay>span{font-size:10px}.project-grid .project-open{height:36px;width:36px;font-size:21px}.hero-image-wrap{inset:34% -15% 0}.hero h1{font-size:9.8vw}}
+@media(max-width:600px){.header nav>a[href="#services"]{display:none}.hero h1{font-size:10.1vw}.hero-copy{padding-top:145px}.hero-image-wrap{inset:39% -35% 0}.hero .eyebrow{font-size:12px;letter-spacing:1.2px}.hero-bottom p{font-size:16px}.section-label{font-size:11px;letter-spacing:.9px}.section-label>span+span{max-width:125px}.manifesto h2{font-size:30px}.manifesto-bottom{display:block}.studio-label{display:block;margin-bottom:25px}.project-grid{grid-template-columns:1fr;gap:42px}.project-grid .project-image{aspect-ratio:1.05}.project-grid .project-overlay strong{font-size:47px}.project-grid .concept-tag,.project-grid .project-overlay>span{font-size:11px}.service-list h3{font-size:23px;line-height:1.2}.service-body p,.process-grid p{font-size:16px}.service-body>span,.process-grid article>span{font-size:12px;letter-spacing:.8px}.process h2{font-size:44px}.site-footer{padding-top:45px}.footer-main{grid-template-columns:1fr 1fr;gap:40px 25px;padding-bottom:40px}.footer-brand{grid-column:1/-1}.footer-column:last-child{grid-column:1/-1}.footer-bottom{align-items:flex-start;flex-wrap:wrap;gap:15px;line-height:1.6}.footer-bottom>span:nth-child(2){display:none}.footer-bottom>a{margin-left:auto}.policy-content{padding:65px 24px}.policy-content h1{font-size:48px}.policy-intro{font-size:18px}.policy-page nav{font-size:12px}.policy-text h2{font-size:23px}.policy-review{padding:13px 15px}}
