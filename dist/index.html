@@ -87,6 +87,7 @@
         <div class="inquiry-honeypot" aria-hidden="true"><label>Leave this blank<input name="_gotcha" tabindex="-1" autocomplete="off"></label></div>
       </fieldset>
       <button class="pill form-submit" type="submit" disabled>Send inquiry ↗</button>
+      <button class="schedule-cta" id="open-scheduler" type="button">Choose a meeting time <span aria-hidden="true">↗</span></button>
       <p id="contact-note" class="form-note">We’ll use your details to respond to your project inquiry. No newsletter signup. <a href="privacy.html">Privacy policy</a></p>
       <p id="form-status" role="status" aria-live="polite" aria-atomic="true"></p>
       <noscript><p class="form-note">Please enable JavaScript to use the inquiry form.</p></noscript>
@@ -97,6 +98,11 @@
       <button class="text-link" id="new-inquiry" type="button">Start another inquiry ↗</button>
     </div>
     <p id="inquiry-email" class="form-note" hidden></p>
+  </dialog>
+  <dialog id="scheduler-dialog" class="scheduler-dialog" aria-labelledby="scheduler-title">
+    <button class="dialog-close" data-close aria-label="Close meeting scheduler">×</button>
+    <div class="scheduler-heading"><p class="eyebrow">ARCLUME STUDIO / DISCOVERY CALL</p><h2 id="scheduler-title">Choose a time that works for you.</h2><p>Pick an available 20-minute slot. Your Google Meet details will be confirmed by Calendly.</p></div>
+    <iframe id="scheduler-frame" title="Choose a meeting date and time" loading="lazy" src="https://calendly.com/moussadeqkarim/30min?embed_domain=localhost&embed_type=Inline" referrerpolicy="strict-origin-when-cross-origin"></iframe>
   </dialog>
 </body>
 </html>

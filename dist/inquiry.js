@@ -9,6 +9,7 @@
   const fields = form.querySelector('fieldset');
   const success = document.getElementById('inquiry-success');
   const fallback = document.getElementById('inquiry-email');
+  const scheduler = document.getElementById('scheduler-dialog');
   let sending = false;
   const email = settings.contactEmail || '';
   if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
@@ -34,6 +35,11 @@
     form.hidden = false;
     form.elements.name.focus();
   });
+  document.getElementById('open-scheduler')?.addEventListener('click', () => {
+    if (scheduler?.showModal) scheduler.showModal();
+  });
+  scheduler?.querySelector('[data-close]')?.addEventListener('click', () => scheduler.close());
+  scheduler?.addEventListener('click', event => { if (event.target === scheduler) scheduler.close(); });
   document.getElementById('contact-dialog').addEventListener('close', () => {
     if (!success.hidden) {
       success.hidden = true;
