@@ -1185,6 +1185,19 @@
 .content-copy { width: min(30vw, 360px); }
 .content-canvas { inset: 8% var(--pad) 12%; }
 
+/* Keep animated cards in the open canvas area so they never cover the copy. */
+@media (min-width: 901px) {
+  .brand-image { --scatter-x: -12vw; }
+  .brand-colour { left: 25%; }
+  .content-master { left: 68%; width: min(62vw, 920px); }
+}
+
+@media (max-width: 900px) and (min-width: 601px) {
+  .brand-image { --scatter-x: -12vw; }
+  .brand-colour { left: 22%; }
+  .content-master { left: 64%; }
+}
+
 /* Keep the deliverables in the open right-hand field so the editorial copy
    stays readable without sitting on top of the first frame. */
 @media (min-width: 901px) {
@@ -1258,6 +1271,7 @@
   .brand-copy h2 { font-size: clamp(40px, 11.5vw, 62px); }
   .brand-canvas { inset: 35% 6% 7%; }
   .content-canvas { inset: 10% 4% 27%; }
+  .content-master { left: 50%; }
   .deliverable-hero { --end-y: 4vh; }
   .deliverable-reel { --end-y: 9vh; }
   .deliverable-story { --end-y: 4vh; }
