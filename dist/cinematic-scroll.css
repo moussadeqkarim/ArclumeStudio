@@ -996,22 +996,26 @@
 .hero-phone {
   padding: 0;
   border: 0;
-  border-radius: clamp(34px, 4vw, 64px);
+  border-radius: 0;
   background: transparent;
   box-shadow: none;
-  overflow: hidden;
+  overflow: visible;
+  isolation: isolate;
 }
 
 .hero-phone::after { display: none; }
 
 .hero-phone-screen {
   position: absolute;
-  inset: 5.7% 4.3%;
+  /* The rotated 800 x 389 bezel has a 772 x 355 opening, inset 14 x 17.
+     Keep the mask proportional to the device, including its 60px corners. */
+  inset: 4.37018% 1.75%;
   z-index: 1;
   width: auto;
   height: auto;
   border: 0;
-  border-radius: clamp(31px, 3.3vw, 52px);
+  border-radius: 7.77202% / 16.90141%;
+  clip-path: inset(0 round 7.77202% / 16.90141%);
 }
 
 .hero-phone-frame {
@@ -1019,7 +1023,7 @@
   z-index: 4;
   top: 50%;
   left: 50%;
-  width: 48.62%;
+  width: 48.625%;
   height: auto;
   max-width: none;
   transform: translate(-50%, -50%) rotate(-90deg);
@@ -1037,10 +1041,6 @@
     margin-top: -19vh;
   }
 
-  .hero-phone-screen {
-    inset: 5.7% 4.2%;
-    border-radius: 18px;
-  }
 }
 
 @media (max-height: 760px) and (min-width: 601px) {
@@ -1050,18 +1050,14 @@
   .hero-bottom > p { font-size: 12px; }
 }
 
-/* Match the warm rose titanium finish from the supplied iPhone reference. */
-.hero-phone { background: linear-gradient(145deg, #b26362 0%, #824653 28%, #5a303f 64%, #aa5a55 100%); }
-
-/* Keep the phone presentation true to Apple's black-on-black device shots:
-   the reel fills the display and the rose treatment stays inside the bezel. */
-.hero-phone { background: #020202; }
+/* Only the masked screen paints video; the transparent bezel sits above it. */
 .hero-phone-screen .hero-image,
 .hero-phone-screen .hero-phone-video {
   display: block;
   object-fit: cover;
   object-position: center;
-  transform: scale(1.015);
+  transform: none;
+  will-change: auto;
 }
 
 /* Editorial sequence layout: the copy reads as a small side note while the
@@ -1239,7 +1235,6 @@
 }
 
 @media (max-width: 600px) {
-  .hero-phone { background: #020202; }
   .service-sequence .sequence-copy,
   .content-sequence .content-copy {
     left: var(--pad);
