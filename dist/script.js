@@ -10,12 +10,12 @@ mainNav?.querySelectorAll('a,button').forEach(link => link.addEventListener('cli
 document.addEventListener('keydown', event => { if (event.key === 'Escape' && mainNav?.classList.contains('is-open')) { closeMenu(); menuToggle.focus(); } });
 document.querySelector('.reel-toggle')?.addEventListener('click', event => {
   const button = event.currentTarget; const paused = button.closest('.reel-panel').classList.toggle('is-paused');
-  button.setAttribute('aria-pressed', String(paused)); button.textContent = paused ? 'Resume motion ▷' : 'Pause motion Ⅱ';
+  button.setAttribute('aria-pressed', String(paused)); button.textContent = paused ? 'Resume motion â–·' : 'Pause motion â…¡';
 });
 const serviceNames = ['Cinematic or story-driven ad', 'Social media marketing', 'Brand or campaign direction', 'Content production', 'Web development'];
 document.querySelectorAll('.service-body').forEach((body, index) => {
   const button = document.createElement('button'); button.className = 'service-cta'; button.type = 'button';
-  button.dataset.contact = ''; button.dataset.service = serviceNames[index]; button.textContent = 'Discuss this service ↗'; body.append(button);
+  button.dataset.contact = ''; button.dataset.service = serviceNames[index]; button.textContent = 'Discuss this service â†—'; body.append(button);
 });
 if (!reducedMotion.matches && 'IntersectionObserver' in window) {
   document.documentElement.classList.add('motion-enabled');
@@ -26,15 +26,33 @@ if (!reducedMotion.matches && 'IntersectionObserver' in window) {
   }, { threshold: 0.12 });
   document.querySelectorAll('.reveal').forEach(element => observer.observe(element));
 }
-const hero = document.querySelector('.hero');
-if (hero) {
+/* One passive scroll listener drives every sticky sequence. Reads and writes
+   happen inside one rAF so the animation stays compositor-friendly. */
+const cinematicSequences = [...document.querySelectorAll('[data-sequence]')];
+if (cinematicSequences.length) {
   let ticking = false;
-  const updateHero = () => {
-    const progress = reducedMotion.matches ? 0 : Math.min(1, Math.max(0, window.scrollY / hero.offsetHeight));
-    hero.style.setProperty('--hero-progress', progress.toFixed(3)); ticking = false;
+  let viewportHeight = window.innerHeight;
+  const updateSequences = () => {
+    cinematicSequences.forEach(sequence => {
+      const progress = reducedMotion.matches
+        ? 1
+        : Math.min(1, Math.max(0, -sequence.getBoundingClientRect().top / Math.max(1, sequence.offsetHeight - viewportHeight)));
+      const value = progress.toFixed(3);
+      sequence.style.setProperty('--scroll-progress', value);
+      /* Keep the legacy variable available for any existing hero overrides. */
+      if (sequence.dataset.sequence === 'hero') sequence.style.setProperty('--hero-progress', value);
+    });
+    ticking = false;
   };
-  window.addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(updateHero); } }, { passive: true });
-  reducedMotion.addEventListener('change', updateHero); updateHero();
+  const requestSequenceUpdate = () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(updateSequences);
+  };
+  window.addEventListener('scroll', requestSequenceUpdate, { passive: true });
+  window.addEventListener('resize', () => { viewportHeight = window.innerHeight; requestSequenceUpdate(); }, { passive: true });
+  reducedMotion.addEventListener('change', requestSequenceUpdate);
+  requestSequenceUpdate();
 }
 document.querySelectorAll('#year').forEach(element => { element.textContent = new Date().getFullYear(); });
 document.querySelectorAll('[data-social]').forEach(element => {
@@ -46,7 +64,7 @@ document.querySelectorAll('[data-social]').forEach(element => {
     const link = document.createElement('a'); link.href = url.href;
     link.textContent = element.dataset.social === 'linkedin' ? 'LinkedIn' : element.dataset.social.charAt(0).toUpperCase() + element.dataset.social.slice(1);
     link.target = '_blank'; link.rel = 'noopener noreferrer';
-    link.setAttribute('aria-label', link.textContent + ' — opens in a new tab'); element.replaceWith(link);
+    link.setAttribute('aria-label', link.textContent + ' â€” opens in a new tab'); element.replaceWith(link);
   } catch { /* Invalid URLs leave the pending label in place. */ }
 });
 document.querySelectorAll('[data-policy-contact]').forEach(element => {
