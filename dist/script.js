@@ -13,6 +13,13 @@ document.querySelector('.reel-toggle')?.addEventListener('click', event => {
   button.setAttribute('aria-pressed', String(paused)); button.textContent = paused ? 'Resume motion ▷' : 'Pause motion Ⅱ';
 });
 const serviceNames = ['Cinematic or story-driven ad', 'Social media marketing', 'Brand or campaign direction', 'Content production', 'Web development'];
+const serviceDetails = [...document.querySelectorAll('.service-list > details')];
+serviceDetails.forEach(detail => detail.addEventListener('toggle', () => {
+  if (!detail.open) return;
+  serviceDetails.forEach(other => {
+    if (other !== detail && other.open) other.open = false;
+  });
+}));
 document.querySelectorAll('.service-body').forEach((body, index) => {
   const button = document.createElement('button'); button.className = 'service-cta'; button.type = 'button';
   button.dataset.contact = ''; button.dataset.service = serviceNames[index]; button.textContent = 'Discuss this service ↗'; body.append(button);
