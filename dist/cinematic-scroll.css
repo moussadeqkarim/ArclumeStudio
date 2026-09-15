@@ -982,3 +982,67 @@
   .hero-copy h1 { transform: none; filter: none; opacity: 1; }
   .motion-lines i { animation: none; transform: none; opacity: 1; }
 }
+
+/* Official-style Pro Max device treatment: a transparent portrait bezel is
+   rotated into the landscape hero so the real edge controls and camera island
+   sit above the replaceable work/video layer. The tiny 36 KB PNG keeps this
+   visual crisp without adding a heavy mockup dependency. */
+.hero-phone-wrap {
+  width: min(78vw, 1080px);
+  aspect-ratio: 800 / 389;
+}
+
+.hero-phone {
+  padding: 0;
+  border: 0;
+  border-radius: clamp(34px, 4vw, 64px);
+  background: transparent;
+  box-shadow: none;
+  overflow: hidden;
+}
+
+.hero-phone::after { display: none; }
+
+.hero-phone-screen {
+  position: absolute;
+  inset: 5.7% 4.3%;
+  z-index: 1;
+  border: 0;
+  border-radius: clamp(31px, 3.3vw, 52px);
+}
+
+.hero-phone-frame {
+  position: absolute;
+  z-index: 4;
+  top: 50%;
+  left: 50%;
+  width: 48.62%;
+  height: auto;
+  max-width: none;
+  transform: translate(-50%, -50%) rotate(90deg);
+  filter: drop-shadow(0 32px 56px #000b);
+  pointer-events: none;
+}
+
+.hero-phone-button,
+.hero-phone-camera { display: none; }
+
+@media (max-width: 600px) {
+  .hero-phone-wrap {
+    width: 94vw;
+    aspect-ratio: 800 / 389;
+    margin-top: -19vh;
+  }
+
+  .hero-phone-screen {
+    inset: 5.7% 4.2%;
+    border-radius: 18px;
+  }
+}
+
+@media (max-height: 760px) and (min-width: 601px) {
+  .hero-phone-wrap { width: min(64vw, 820px); margin-top: -12vh; }
+  .hero-copy h1 { top: 67vh; font-size: clamp(50px, 5.2vw, 64px); line-height: 1.03; }
+  .hero-bottom { bottom: 30px; }
+  .hero-bottom > p { font-size: 12px; }
+}
