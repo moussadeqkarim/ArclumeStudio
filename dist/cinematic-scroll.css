@@ -1157,6 +1157,10 @@
   .social-format-paid { --end-x: 10vw; }
   .social-format-story { --end-x: 20vw; }
   .social-format-content { --end-x: 31vw; }
+  .social-format-reel { --end-y: 7vh; }
+  .social-format-paid { --end-y: 9vh; }
+  .social-format-story { --end-y: 8vh; }
+  .social-format-content { --end-y: 10vh; }
 }
 
 .brand-copy {
@@ -1198,6 +1202,12 @@
   .deliverable-six { --end-x: 24vw; }
   .deliverable-four { --end-x: 32vw; }
   .deliverable-static { --end-x: 38vw; }
+  .deliverable-hero { --end-y: 4vh; }
+  .deliverable-reel { --end-y: 10vh; }
+  .deliverable-story { --end-y: 4vh; }
+  .deliverable-six { --end-y: 9vh; }
+  .deliverable-four { --end-y: 3vh; }
+  .deliverable-static { --end-y: 10vh; }
 }
 
 .brand-motion { left: 42%; top: 6%; width: 15%; }
@@ -1248,6 +1258,12 @@
   .brand-copy h2 { font-size: clamp(40px, 11.5vw, 62px); }
   .brand-canvas { inset: 35% 6% 7%; }
   .content-canvas { inset: 10% 4% 27%; }
+  .deliverable-hero { --end-y: 4vh; }
+  .deliverable-reel { --end-y: 9vh; }
+  .deliverable-story { --end-y: 4vh; }
+  .deliverable-six { --end-y: 8vh; }
+  .deliverable-four { --end-y: 4vh; }
+  .deliverable-static { --end-y: 10vh; }
 }
 
 @media (prefers-reduced-motion: reduce) {
