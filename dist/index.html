@@ -7,10 +7,11 @@
   <meta name="description" content="Arclume Studio is an independent creative agency for cinematic ads, story-driven campaigns and social media marketing. Different businesses. One creative vision.">
   <title>Arclume Studio — Make them feel something.</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="agency.css">
   <link rel="stylesheet" href="refinement.css">
-  <link rel="stylesheet" href="cinematic.css">
+  <link rel="stylesheet" href="cinematic.css?v=7">
   <script src="config.js" defer></script>
   <script src="script.js?v=6" defer></script>
   <script src="inquiry.js?v=2" defer></script>
@@ -32,29 +33,47 @@
         </div>
         <div class="hero-object" aria-hidden="true">
           <div class="object-halo"></div>
-          <div class="hero-image-wrap"><img class="hero-image" src="assets/lightform-concept.png" alt="" width="1440" height="1080" fetchpriority="high"><div class="image-shade"></div><div class="object-frame"><span>PLACEHOLDER / CINEMATIC FRAME</span><span>LIGHT · MATERIAL · MOTION</span></div></div>
+          <!-- Replace the poster image inside .hero-phone-screen with a muted,
+               inline video when the final hero film is ready. Keep the copy in
+               HTML so it remains selectable, searchable and accessible. -->
+          <div class="hero-phone-wrap">
+            <div class="hero-phone">
+              <span class="hero-phone-button hero-phone-button-top"></span>
+              <span class="hero-phone-button hero-phone-button-bottom"></span>
+              <span class="hero-phone-camera" aria-hidden="true"></span>
+              <div class="hero-phone-screen">
+                <!-- Free editorial photograph by X F / Unsplash. Replace this
+                     image with the final muted reel when it is delivered. -->
+                <img class="hero-image" src="https://images.unsplash.com/photo-1779598991841-333ceb64af89?auto=format&amp;fit=crop&amp;fm=webp&amp;q=82&amp;w=1800" srcset="https://images.unsplash.com/photo-1779598991841-333ceb64af89?auto=format&amp;fit=crop&amp;fm=webp&amp;q=80&amp;w=900 900w, https://images.unsplash.com/photo-1779598991841-333ceb64af89?auto=format&amp;fit=crop&amp;fm=webp&amp;q=82&amp;w=1800 1800w" sizes="(max-width: 600px) 94vw, 84vw" alt="" width="1800" height="834" fetchpriority="high">
+                <div class="hero-phone-glass"></div>
+              </div>
+            </div>
+          </div>
         </div>
         <span class="hero-side" aria-hidden="true">SCROLL TO DISCOVER —</span>
       </div>
     </section>
 
-    <!-- These sections use existing concept stills as replaceable media placeholders. Swap the image src values for final films/stills later. -->
+    <!-- These sections use replaceable campaign stills as temporary media. Swap
+         the image src values for final films/stills later; the HTML copy stays
+         outside media frames for readability. -->
     <section class="cinematic-sequence service-sequence advertising-sequence" data-sequence="advertising" aria-labelledby="advertising-title">
       <div class="cinematic-sticky">
         <div class="sequence-glow" aria-hidden="true"></div>
-        <div class="sequence-media advertising-media"><img src="assets/yellow-satin.png" alt="" width="1672" height="941" loading="lazy"><span class="media-label">PLACEHOLDER / LANDSCAPE MEDIA</span></div>
-        <div class="sequence-copy"><p class="eyebrow">01 / CINEMATIC ADVERTISING</p><h2 id="advertising-title">Stories worth watching.</h2><p>Concept · Story · Direction · Film · Sound</p></div>
+        <!-- Free street photograph by Rochelle Lee / Unsplash. -->
+        <div class="sequence-media advertising-media"><img src="https://images.unsplash.com/photo-1763431921801-8dfc1bac8793?auto=format&amp;fit=crop&amp;fm=webp&amp;q=82&amp;w=1800" srcset="https://images.unsplash.com/photo-1763431921801-8dfc1bac8793?auto=format&amp;fit=crop&amp;fm=webp&amp;q=78&amp;w=900 900w, https://images.unsplash.com/photo-1763431921801-8dfc1bac8793?auto=format&amp;fit=crop&amp;fm=webp&amp;q=82&amp;w=1800 1800w" sizes="92vw" alt="A person with an umbrella walking through a rain-lit city street at night" width="1800" height="1200" loading="lazy" decoding="async"></div>
+        <div class="sequence-copy"><p class="eyebrow">01 / CINEMATIC ADVERTISING</p><h2 id="advertising-title">Stories worth watching.</h2><p>Concept · Story · Direction · Film · Sound</p><span class="sequence-note">Temporary campaign still · final film slot</span></div>
       </div>
     </section>
 
     <section class="cinematic-sequence service-sequence social-sequence" data-sequence="social" aria-labelledby="social-title">
       <div class="cinematic-sticky">
-        <div class="social-master"><img src="assets/espresso-concept.png" alt="" width="1448" height="1086" loading="lazy"><span>ONE CAMPAIGN / MANY MOMENTS</span></div>
+        <div class="social-master"><img src="assets/sokoune/02.png" alt="" width="648" height="810" loading="lazy"><span>ONE CAMPAIGN / MANY MOMENTS</span></div>
         <div class="social-formats" aria-hidden="true">
-          <div class="social-format social-format-reel"><img src="assets/espresso-concept.png" alt=""><b>REEL</b></div>
-          <div class="social-format social-format-paid"><img src="assets/espresso-concept.png" alt=""><b>PAID SOCIAL</b></div>
-          <div class="social-format social-format-story"><img src="assets/espresso-concept.png" alt=""><b>STORY</b></div>
-          <div class="social-format social-format-content"><img src="assets/espresso-concept.png" alt=""><b>CONTENT</b></div>
+          <div class="social-format social-format-reel"><div class="social-frame"><img src="assets/sokoune/02.png" alt="" loading="lazy"></div><b>REEL</b></div>
+          <div class="social-format social-format-paid"><div class="social-frame"><img src="assets/sokoune/09.png" alt="" loading="lazy"></div><b>PAID SOCIAL</b></div>
+          <div class="social-format social-format-story"><div class="social-frame"><img src="assets/sokoune/10.png" alt="" loading="lazy"></div><b>STORY</b></div>
+          <div class="social-format social-format-content"><div class="social-frame"><img src="assets/sokoune/12.png" alt="" loading="lazy"></div><b>CONTENT</b></div>
         </div>
         <div class="sequence-copy social-copy"><p class="eyebrow">02 / SOCIAL MEDIA MARKETING</p><h2 id="social-title">One story.<br>Wherever they scroll.</h2><p>Reels · Paid social · Stories · Content</p></div>
       </div>
@@ -63,12 +82,12 @@
     <section class="cinematic-sequence service-sequence brand-sequence" data-sequence="brand" aria-labelledby="brand-title">
       <div class="cinematic-sticky">
         <div class="brand-copy"><p class="eyebrow">03 / BRAND &amp; CAMPAIGN DIRECTION</p><h2 id="brand-title">Give the idea<br>a point of view.</h2><p>Image, type, colour, message and motion — brought into one clear world.</p></div>
-        <div class="brand-canvas" aria-label="Campaign ingredients assembling into one composition">
-          <div class="brand-tile brand-image" data-brand-element="image">IMAGE</div>
-          <div class="brand-tile brand-type" data-brand-element="type">TYPE</div>
-          <div class="brand-tile brand-colour" data-brand-element="colour">COLOUR</div>
-          <div class="brand-tile brand-message" data-brand-element="message">MESSAGE</div>
-          <div class="brand-tile brand-motion" data-brand-element="motion">MOTION</div>
+        <div class="brand-canvas" aria-label="Client campaign ingredients assembling into one composition">
+          <div class="brand-tile brand-image" data-brand-element="image"><div class="brand-tile-media"><img src="assets/sokoune/09.png" alt="Sokoune lip balm campaign image beside water" loading="lazy"></div><span class="brand-tile-meta">IMAGE · CLIENT WORK</span></div>
+          <div class="brand-tile brand-type" data-brand-element="type"><strong class="brand-sample">Aa</strong><span class="brand-tile-meta">TYPE · HUMANIST SANS</span></div>
+          <div class="brand-tile brand-colour" data-brand-element="colour"><div class="colour-swatches" aria-hidden="true"><i></i><i></i><i></i><i></i></div><span class="brand-tile-meta">COLOUR · WARM / TACTILE</span></div>
+          <div class="brand-tile brand-message" data-brand-element="message"><strong>A daily ritual,<br>made luminous.</strong><span class="brand-tile-meta">MESSAGE · SIMPLE / FELT</span></div>
+          <div class="brand-tile brand-motion" data-brand-element="motion"><div class="motion-lines" aria-hidden="true"><i></i><i></i><i></i></div><span class="brand-tile-meta">MOTION · QUIET PULSE</span></div>
         </div>
       </div>
     </section>
@@ -77,13 +96,13 @@
       <div class="cinematic-sticky">
         <div class="content-copy"><p class="eyebrow">04 / CONTENT PRODUCTION</p><h2 id="content-title">One idea.<br>More mileage.</h2><p>Hero film · Reel · Story · 6 sec · 4:5 · Static</p></div>
         <div class="content-canvas" aria-label="One master campaign frame becoming multiple deliverables">
-          <div class="content-master"><img src="assets/lightform-concept.png" alt="" width="1440" height="1080" loading="lazy"><span>MASTER CAMPAIGN FRAME</span></div>
-          <div class="deliverable deliverable-hero"><img src="assets/lightform-concept.png" alt=""><b>HERO FILM</b></div>
-          <div class="deliverable deliverable-reel"><img src="assets/lightform-concept.png" alt=""><b>REEL</b></div>
-          <div class="deliverable deliverable-story"><img src="assets/lightform-concept.png" alt=""><b>STORY</b></div>
-          <div class="deliverable deliverable-six"><img src="assets/lightform-concept.png" alt=""><b>6 SEC</b></div>
-          <div class="deliverable deliverable-four"><img src="assets/lightform-concept.png" alt=""><b>4:5</b></div>
-          <div class="deliverable deliverable-static"><img src="assets/lightform-concept.png" alt=""><b>STATIC</b></div>
+          <div class="content-master"><img src="assets/sokoune/01.png" alt="" width="608" height="810" loading="lazy"><span>MASTER CAMPAIGN FRAME</span></div>
+          <div class="deliverable deliverable-hero"><div class="deliverable-frame"><img src="assets/sokoune/01.png" alt="" loading="lazy"></div><b>HERO FILM</b></div>
+          <div class="deliverable deliverable-reel"><div class="deliverable-frame"><img src="assets/sokoune/02.png" alt="" loading="lazy"></div><b>REEL</b></div>
+          <div class="deliverable deliverable-story"><div class="deliverable-frame"><img src="assets/sokoune/05.png" alt="" loading="lazy"></div><b>STORY</b></div>
+          <div class="deliverable deliverable-six"><div class="deliverable-frame"><img src="assets/sokoune/09.png" alt="" loading="lazy"></div><b>6 SEC</b></div>
+          <div class="deliverable deliverable-four"><div class="deliverable-frame"><img src="assets/sokoune/10.png" alt="" loading="lazy"></div><b>4:5</b></div>
+          <div class="deliverable deliverable-static"><div class="deliverable-frame"><img src="assets/sokoune/12.png" alt="" loading="lazy"></div><b>STATIC</b></div>
         </div>
       </div>
     </section>

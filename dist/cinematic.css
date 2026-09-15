@@ -554,3 +554,431 @@
   .brand-tile { position: relative; inset: auto; width: 46%; min-height: 90px; display: inline-grid; margin: 1%; }
   .work-immersive .project-image { height: auto; min-height: 420px; }
 }
+
+/*
+  Cinematic media refinement
+  --------------------------
+  The hero is now a lightweight CSS phone shell around a replaceable poster.
+  When the final reel arrives, replace the image inside .hero-phone-screen with
+  a muted, playsinline video; the device frame and scroll choreography remain.
+*/
+.hero-copy {
+  display: block;
+  padding: 0 var(--pad);
+  transform: none;
+  opacity: 1;
+}
+
+.hero-copy .eyebrow {
+  position: absolute;
+  top: clamp(92px, 12vh, 128px);
+  left: 0;
+  right: 0;
+  margin: 0;
+}
+
+.hero-copy h1 {
+  position: absolute;
+  top: 62vh;
+  left: var(--pad);
+  right: var(--pad);
+  margin: 0 auto;
+  max-width: 980px;
+  font-size: clamp(58px, 7vw, 108px);
+  transform: translateY(calc((1 - var(--scroll-progress)) * 5vh));
+  opacity: 1;
+  will-change: transform, opacity;
+}
+
+.hero-bottom {
+  position: absolute !important;
+  top: auto;
+  bottom: clamp(30px, 7vh, 72px);
+  margin: 0;
+  transform: translateY(calc((1 - var(--scroll-progress)) * 3vh));
+  opacity: var(--scroll-progress);
+  will-change: transform, opacity;
+}
+
+.hero-phone-wrap {
+  position: relative;
+  z-index: 2;
+  width: min(76vw, 1050px);
+  aspect-ratio: 2.16;
+  margin-top: clamp(-220px, -22vh, -120px);
+  transform: translateY(calc((1 - var(--scroll-progress)) * 2vh)) scale(calc(.96 + var(--scroll-progress) * .04)) rotateX(calc((1 - var(--scroll-progress)) * 2deg));
+  transform-origin: center;
+  filter: saturate(calc(.94 + var(--scroll-progress) * .06));
+  opacity: 1;
+  will-change: transform, filter, opacity;
+}
+
+.hero-phone {
+  position: absolute;
+  inset: 0;
+  padding: clamp(6px, .62vw, 9px);
+  border: 1px solid #4f5052;
+  border-radius: clamp(34px, 4vw, 64px);
+  background: linear-gradient(155deg, #434447 0%, #111214 10%, #020203 42%, #28292c 78%, #08090a 100%);
+  box-shadow:
+    0 38px 110px #000,
+    0 0 0 2px #030303,
+    0 0 34px #ffffff12,
+    inset 0 0 0 1px #90929752;
+}
+
+.hero-phone::after {
+  content: '';
+  position: absolute;
+  inset: 3px;
+  z-index: 4;
+  border: 1px solid #ffffff16;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.hero-phone-screen {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border: 1px solid #000;
+  border-radius: clamp(27px, 3.4vw, 54px);
+  background: #0b0b0b;
+}
+
+.hero-phone-screen .hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 48%;
+  mix-blend-mode: normal;
+  transform: scale(calc(1.08 - var(--scroll-progress) * .08));
+  will-change: transform;
+}
+
+.hero-phone-glass {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(112deg, #ffffff1f 0%, transparent 18%, transparent 75%, #ffffff0f 100%),
+    linear-gradient(180deg, #0000000a, #00000032);
+  pointer-events: none;
+}
+
+.hero-phone-camera {
+  position: absolute;
+  z-index: 3;
+  left: auto;
+  right: clamp(13px, 1.25vw, 20px);
+  top: 50%;
+  width: clamp(7px, .75vw, 11px);
+  height: clamp(48px, 5.8vw, 80px);
+  border-radius: 999px;
+  background: #030303;
+  box-shadow: inset 0 0 0 1px #292929, 0 0 10px #000;
+  transform: translateY(-50%);
+}
+
+.hero-phone-camera::after {
+  content: '';
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #101c2f;
+  box-shadow: 0 0 3px #39577d;
+  transform: translateX(-50%);
+}
+
+.hero-phone-button {
+  position: absolute;
+  z-index: -1;
+  top: -4px;
+  height: 4px;
+  border-radius: 3px 3px 0 0;
+  background: linear-gradient(#8b8881, #262626);
+}
+
+.hero-phone-button-top { left: 54%; width: 14%; }
+.hero-phone-button-bottom { left: 71%; width: 7%; }
+
+.sequence-copy,
+.content-copy {
+  padding: clamp(16px, 2vw, 26px);
+  border: 1px solid #ffffff12;
+  border-radius: 20px;
+  background: linear-gradient(145deg, #0a0a0ae8, #111111c7);
+  box-shadow: 0 22px 65px #0008;
+  backdrop-filter: blur(16px);
+}
+
+.sequence-note {
+  display: block;
+  margin-top: 12px;
+  color: #7f7f7b;
+  font-size: 9px;
+  letter-spacing: 1.35px;
+  text-transform: uppercase;
+}
+
+.advertising-media img {
+  object-position: center 52%;
+}
+
+.social-master {
+  aspect-ratio: 16 / 9;
+}
+
+.social-format {
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+  aspect-ratio: auto;
+  overflow: visible;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.social-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 9 / 16;
+  overflow: hidden;
+  border: 1px solid #ffffff4d;
+  border-radius: 18px;
+  background: #171717;
+  box-shadow: 0 25px 70px #000b;
+}
+
+.social-frame::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, #ffffff08, transparent 30%, #00000026);
+  pointer-events: none;
+}
+
+.social-format::after { display: none; }
+
+.social-format b {
+  position: static;
+  align-self: center;
+  color: #a9a9a5;
+  font-size: 9px;
+  letter-spacing: 1.35px;
+  text-align: center;
+}
+
+.brand-copy {
+  padding: clamp(18px, 2vw, 28px);
+  border: 1px solid #17171712;
+  border-radius: 22px;
+  background: #f6f6f2e8;
+  box-shadow: 0 18px 50px #1717170b;
+  backdrop-filter: blur(12px);
+}
+
+.brand-tile {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: space-between;
+  overflow: hidden;
+  padding: 16px;
+  background: #fff;
+}
+
+.brand-image {
+  padding: 0;
+  background: #fff;
+  color: #1b1b1b;
+}
+
+.brand-tile-media {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.brand-tile-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.brand-tile-meta {
+  display: block;
+  margin-top: auto;
+  color: #555550;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  line-height: 1.3;
+  text-transform: uppercase;
+}
+
+.brand-image .brand-tile-meta {
+  width: 100%;
+  padding: 10px 12px;
+  background: #fff;
+}
+
+.brand-sample {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(48px, 6vw, 96px);
+  font-weight: 400;
+  letter-spacing: -.08em;
+  line-height: .8;
+}
+
+.colour-swatches {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  width: 100%;
+  height: 58%;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.colour-swatches i:nth-child(1) { background: #e95568; }
+.colour-swatches i:nth-child(2) { background: #ffc9a3; }
+.colour-swatches i:nth-child(3) { background: #66c9d7; }
+.colour-swatches i:nth-child(4) { background: #f7eddb; }
+
+.brand-message strong {
+  color: #171717;
+  font-size: clamp(15px, 1.8vw, 28px);
+  font-weight: 600;
+  letter-spacing: -.045em;
+  line-height: 1;
+}
+
+.brand-motion {
+  background: #151515;
+}
+
+.brand-motion .brand-tile-meta { color: #c6c6c0; }
+
+.motion-lines {
+  display: grid;
+  gap: 7px;
+  width: 100%;
+  padding-top: 8px;
+}
+
+.motion-lines i {
+  display: block;
+  height: 4px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #f3cf57, #fff0, #f3cf57);
+  transform-origin: left;
+  animation: campaignPulse 2.8s ease-in-out infinite alternate;
+}
+
+.motion-lines i:nth-child(2) { width: 72%; animation-delay: -.7s; }
+.motion-lines i:nth-child(3) { width: 46%; animation-delay: -1.4s; }
+
+@keyframes campaignPulse {
+  from { transform: scaleX(.42); opacity: .42; }
+  to { transform: scaleX(1); opacity: 1; }
+}
+
+.deliverable {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  aspect-ratio: auto;
+  overflow: visible;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.deliverable-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 9 / 16;
+  overflow: hidden;
+  border: 1px solid #ffffff42;
+  border-radius: 16px;
+  background: #161616;
+  box-shadow: 0 24px 65px #000;
+}
+
+.deliverable-frame::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, #ffffff08, transparent 34%, #00000025);
+  pointer-events: none;
+}
+
+.deliverable::after { display: none; }
+
+.deliverable b {
+  position: static;
+  align-self: center;
+  color: #aaa9a5;
+  font-size: 8px;
+  letter-spacing: 1.25px;
+  text-align: center;
+}
+
+.deliverable-hero { width: clamp(170px, 21vw, 300px); }
+.deliverable-hero .deliverable-frame { aspect-ratio: 16 / 9; }
+.deliverable-four .deliverable-frame { aspect-ratio: 4 / 5; }
+.deliverable-static .deliverable-frame { aspect-ratio: 1; }
+
+@media (max-width: 900px) {
+  .hero-copy h1 { top: 61vh; }
+  .hero-phone-wrap { width: min(89vw, 820px); margin-top: -15vh; }
+  .hero-bottom { bottom: 34px; }
+  .brand-copy { max-width: min(490px, calc(100% - (var(--pad) * 2))); }
+}
+
+@media (max-width: 600px) {
+  .hero-copy .eyebrow { top: 94px; }
+  .hero-phone-wrap { width: 94vw; margin-top: -19vh; }
+  .hero-phone { padding: 4px; border-radius: 24px; }
+  .hero-phone-screen { border-radius: 19px; }
+  .hero-phone-camera { left: auto; right: 9px; width: 5px; height: 34px; }
+  .hero-copy h1 { top: 52vh; font-size: clamp(46px, 11.6vw, 64px); }
+  .hero-bottom { bottom: 22px; }
+  .hero-bottom { transform: none; opacity: 1; }
+  .hero-bottom p { max-width: 28ch; }
+  .sequence-copy,
+  .content-copy { padding: 16px; border-radius: 16px; }
+  .advertising-media { top: 37%; }
+  .social-formats { transform: translateY(-6vh); }
+  .social-master { top: 43%; }
+  .sequence-note { display: none; }
+  .social-frame { border-radius: 11px; }
+  .social-format { gap: 7px; }
+  .social-format b { font-size: 6px; }
+  .brand-copy { top: 78px; }
+  .brand-canvas { inset: 39% 6% 7%; }
+  .brand-tile { padding: 10px; }
+  .brand-image { padding: 0; }
+  .brand-image .brand-tile-meta { padding: 7px 8px; }
+  .brand-tile-meta { font-size: 6px; letter-spacing: .7px; }
+  .brand-sample { font-size: 48px; }
+  .brand-message strong { font-size: 13px; }
+  .deliverable { gap: 7px; }
+  .deliverable-frame { border-radius: 10px; }
+  .deliverable b { font-size: 6px; }
+  .deliverable-hero { width: 34vw; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-phone-wrap,
+  .hero-phone-screen .hero-image,
+  .hero-copy h1 { transform: none; filter: none; opacity: 1; }
+  .motion-lines i { animation: none; transform: none; opacity: 1; }
+}
