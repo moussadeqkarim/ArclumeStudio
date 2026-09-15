@@ -1008,6 +1008,8 @@
   position: absolute;
   inset: 5.7% 4.3%;
   z-index: 1;
+  width: auto;
+  height: auto;
   border: 0;
   border-radius: clamp(31px, 3.3vw, 52px);
 }
@@ -1056,6 +1058,7 @@
 .hero-phone { background: #020202; }
 .hero-phone-screen .hero-image,
 .hero-phone-screen .hero-phone-video {
+  display: block;
   object-fit: cover;
   object-position: center;
   transform: scale(1.015);
