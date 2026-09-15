@@ -991,7 +991,7 @@
    sit above the replaceable work/video layer. The tiny 36 KB PNG keeps this
    visual crisp without adding a heavy mockup dependency. */
 .hero-phone-wrap {
-  width: min(78vw, 1080px);
+  width: min(64vw, 820px);
   aspect-ratio: 800 / 389;
 }
 
@@ -1046,9 +1046,7 @@
 }
 
 @media (max-height: 760px) and (min-width: 601px) {
-  /* Keep the landscape device inside short laptop/browser viewports so it
-     does not crowd the navigation or push the headline below the fold. */
-  .hero-phone-wrap { width: min(56vw, 720px); margin-top: -9vh; }
+  .hero-phone-wrap { width: min(64vw, 820px); margin-top: -9vh; }
   .hero-copy h1 { top: 67vh; font-size: clamp(50px, 5.2vw, 64px); line-height: 1.03; }
   .hero-bottom { bottom: 30px; }
   .hero-bottom > p { font-size: 12px; }
