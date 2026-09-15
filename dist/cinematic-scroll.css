@@ -1046,7 +1046,9 @@
 }
 
 @media (max-height: 760px) and (min-width: 601px) {
-  .hero-phone-wrap { width: min(64vw, 820px); margin-top: -12vh; }
+  /* Keep the landscape device inside short laptop/browser viewports so it
+     does not crowd the navigation or push the headline below the fold. */
+  .hero-phone-wrap { width: min(56vw, 720px); margin-top: -9vh; }
   .hero-copy h1 { top: 67vh; font-size: clamp(50px, 5.2vw, 64px); line-height: 1.03; }
   .hero-bottom { bottom: 30px; }
   .hero-bottom > p { font-size: 12px; }
