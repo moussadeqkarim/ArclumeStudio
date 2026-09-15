@@ -26,15 +26,33 @@ if (!reducedMotion.matches && 'IntersectionObserver' in window) {
   }, { threshold: 0.12 });
   document.querySelectorAll('.reveal').forEach(element => observer.observe(element));
 }
-const hero = document.querySelector('.hero');
-if (hero) {
+/* One passive scroll listener drives every sticky sequence. Reads and writes
+   happen inside one rAF so the animation stays compositor-friendly. */
+const cinematicSequences = [...document.querySelectorAll('[data-sequence]')];
+if (cinematicSequences.length) {
   let ticking = false;
-  const updateHero = () => {
-    const progress = reducedMotion.matches ? 0 : Math.min(1, Math.max(0, window.scrollY / hero.offsetHeight));
-    hero.style.setProperty('--hero-progress', progress.toFixed(3)); ticking = false;
+  let viewportHeight = window.innerHeight;
+  const updateSequences = () => {
+    cinematicSequences.forEach(sequence => {
+      const progress = reducedMotion.matches
+        ? 1
+        : Math.min(1, Math.max(0, -sequence.getBoundingClientRect().top / Math.max(1, sequence.offsetHeight - viewportHeight)));
+      const value = progress.toFixed(3);
+      sequence.style.setProperty('--scroll-progress', value);
+      /* Keep the legacy variable available for any existing hero overrides. */
+      if (sequence.dataset.sequence === 'hero') sequence.style.setProperty('--hero-progress', value);
+    });
+    ticking = false;
   };
-  window.addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(updateHero); } }, { passive: true });
-  reducedMotion.addEventListener('change', updateHero); updateHero();
+  const requestSequenceUpdate = () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(updateSequences);
+  };
+  window.addEventListener('scroll', requestSequenceUpdate, { passive: true });
+  window.addEventListener('resize', () => { viewportHeight = window.innerHeight; requestSequenceUpdate(); }, { passive: true });
+  reducedMotion.addEventListener('change', requestSequenceUpdate);
+  requestSequenceUpdate();
 }
 document.querySelectorAll('#year').forEach(element => { element.textContent = new Date().getFullYear(); });
 document.querySelectorAll('[data-social]').forEach(element => {
