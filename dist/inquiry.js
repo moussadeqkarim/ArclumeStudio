@@ -84,14 +84,27 @@
         return;
       }
     }
+    const inquiryName = form.elements.name.value.trim();
+    const inquiryEmail = form.elements.email.value.trim();
+    const inquiryBrand = form.elements.brand.value.trim();
+    const inquiryService = form.elements.service.value;
+    const inquiryIdea = form.elements.idea.value.trim();
+    const emailSubject = `Project inquiry — ${inquiryBrand || inquiryName}`;
+    const emailBody = [
+      ['Name', inquiryName],
+      ['Email', inquiryEmail],
+      ...(inquiryBrand ? [['Business / website', inquiryBrand]] : []),
+      ['Service', inquiryService],
+      ['Project idea', inquiryIdea]
+    ].map(([label, value]) => `${label}: ${value}`).join('\n');
     const payload = new FormData(form);
-    payload.set('name', form.elements.name.value.trim());
-    payload.set('email', form.elements.email.value.trim());
-    payload.set('message', form.elements.idea.value.trim());
+    payload.set('name', inquiryName);
+    payload.set('email', inquiryEmail);
+    payload.set('message', inquiryIdea);
     payload.delete('idea');
-    payload.set('subject', 'New project inquiry — Arclume Studio');
+    payload.set('subject', emailSubject);
     if (!endpoint && emailFallback) {
-      window.location.href = `mailto:${email}?subject=${encodeURIComponent('New project inquiry — ' + (form.elements.brand.value.trim() || 'Arclume Studio'))}&body=${encodeURIComponent([...payload.entries()].map(([key, value]) => `${key}: ${value}`).join('\n'))}`;
+      window.location.href = `mailto:${email}?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
       showStatus(`Your email app should open with a draft. Press Send to contact Arclume at ${email}.`, 'pending');
       return;
     }
