@@ -91,7 +91,7 @@
     payload.delete('idea');
     payload.set('subject', 'New project inquiry — Arclume Studio');
     if (!endpoint && emailFallback) {
-      window.location.href = `mailto:${email}?subject=${encodeURIComponent('New project inquiry — ' + (form.elements.brand.value.trim() || 'Arclume Studio'))}&body=${encodeURIComponent([...payload.entries()].map(([key, value]) => `${key}: ${value}`).join('\\n'))}`;
+      window.location.href = `mailto:${email}?subject=${encodeURIComponent('New project inquiry — ' + (form.elements.brand.value.trim() || 'Arclume Studio'))}&body=${encodeURIComponent([...payload.entries()].map(([key, value]) => `${key}: ${value}`).join('\n'))}`;
       showStatus(`Your email app should open with a draft. Press Send to contact Arclume at ${email}.`, 'pending');
       return;
     }
