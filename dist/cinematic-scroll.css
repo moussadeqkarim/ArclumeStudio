@@ -571,7 +571,7 @@
 
 .hero-copy .eyebrow {
   position: absolute;
-  top: clamp(92px, 12vh, 128px);
+  top: clamp(78px, 8vh, 96px);
   left: 0;
   right: 0;
   margin: 0;
@@ -579,7 +579,7 @@
 
 .hero-copy h1 {
   position: absolute;
-  top: 62vh;
+  top: clamp(560px, 72vh, 760px);
   left: var(--pad);
   right: var(--pad);
   margin: 0 auto;
@@ -647,7 +647,8 @@
   background: #0b0b0b;
 }
 
-.hero-phone-screen .hero-image {
+.hero-phone-screen .hero-image,
+.hero-phone-screen .hero-phone-video {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -740,7 +741,7 @@
   overflow: visible;
   border: 0;
   border-radius: 0;
-  background: transparent;
+  background: linear-gradient(145deg, #b26362 0%, #824653 28%, #5a303f 64%, #aa5a55 100%);
   box-shadow: none;
 }
 
@@ -1019,7 +1020,7 @@
   width: 48.62%;
   height: auto;
   max-width: none;
-  transform: translate(-50%, -50%) rotate(90deg);
+  transform: translate(-50%, -50%) rotate(-90deg);
   filter: drop-shadow(0 32px 56px #000b);
   pointer-events: none;
 }
@@ -1046,3 +1047,6 @@
   .hero-bottom { bottom: 30px; }
   .hero-bottom > p { font-size: 12px; }
 }
+
+/* Match the warm rose titanium finish from the supplied iPhone reference. */
+.hero-phone { background: linear-gradient(145deg, #b26362 0%, #824653 28%, #5a303f 64%, #aa5a55 100%); }
