@@ -11,15 +11,15 @@
   <link rel="stylesheet" href="agency.css">
   <link rel="stylesheet" href="refinement.css">
   <script src="config.js" defer></script>
-  <script src="script.js?v=4" defer></script>
-  <script src="inquiry.js" defer></script>
+  <script src="script.js?v=5" defer></script>
+  <script src="inquiry.js?v=2" defer></script>
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
   <header class="header">
     <a class="wordmark" href="#" aria-label="Arclume Studio home">arclume<small>STUDIO</small></a>
     <button class="menu-toggle" aria-expanded="false" aria-controls="main-nav">Menu <span aria-hidden="true">+</span></button>
-    <nav id="main-nav" aria-label="Main navigation"><a href="#work">Work</a><a href="#services">Services</a><a href="#studio">About</a><button class="nav-contact" data-contact>Let’s talk <span aria-hidden="true">↗</span></button></nav>
+    <nav id="main-nav" aria-label="Main navigation"><a href="#work">Work</a><a href="client-work.html">Client Work</a><a href="#services">Services</a><a href="#studio">About</a><button class="nav-contact" data-contact>Let’s talk <span aria-hidden="true">↗</span></button></nav>
   </header>
   <main id="main">
     <section class="hero" aria-labelledby="hero-title">
@@ -33,7 +33,7 @@
     </section>
     <section class="service-reel section-pad" aria-labelledby="reel-title">
       <div class="reel-copy"><p class="eyebrow">ONE CREATIVE PARTNER. MORE POSSIBILITIES.</p><h2 id="reel-title">A story.<br>A whole world<br>of possibilities.</h2><a class="text-link" href="#services">Find your format <span aria-hidden="true">↓</span></a></div>
-      <div class="reel-panel"><div class="reel-window" aria-hidden="true"><div class="reel-track"><div class="reel-group"><span>Cinematic ads</span><span>Social marketing</span><span>Brand direction</span><span>Content creation</span></div><div class="reel-group"><span>Cinematic ads</span><span>Social marketing</span><span>Brand direction</span><span>Content creation</span></div></div></div><p class="sr-only">Cinematic ads, social media marketing, brand direction and content creation.</p><button class="reel-toggle" aria-pressed="false">Pause motion <span aria-hidden="true">Ⅱ</span></button></div>
+      <div class="reel-panel"><div class="reel-window" aria-hidden="true"><div class="reel-track"><div class="reel-group"><span>Cinematic ads</span><span>Social marketing</span><span>Brand direction</span><span>Content creation</span><span>Web development</span></div><div class="reel-group"><span>Cinematic ads</span><span>Social marketing</span><span>Brand direction</span><span>Content creation</span><span>Web development</span></div></div></div><p class="sr-only">Cinematic ads, social media marketing, brand direction, content creation and web development.</p><button class="reel-toggle" aria-pressed="false">Pause motion <span aria-hidden="true">Ⅱ</span></button></div>
     </section>
     <section class="manifesto section-pad" id="studio" aria-labelledby="manifesto-title">
       <div class="section-label"><span>01 / ABOUT ARCLUME</span><span>CREATIVE, WITH INTENT.</span></div>
@@ -57,6 +57,7 @@
         <details><summary><span class="service-number">02</span><h3>Social media marketing</h3><span class="service-toggle" aria-hidden="true">+</span></summary><div class="service-body"><p>A clear direction for your social presence, a considered content plan and creative that belongs in your audience’s feed. We shape the approach around your business and the channels that matter to it.</p><span>SOCIAL STRATEGY · CONTENT PLANNING · CAMPAIGN CREATIVE</span></div></details>
         <details><summary><span class="service-number">03</span><h3>Brand & campaign direction</h3><span class="service-toggle" aria-hidden="true">+</span></summary><div class="service-body"><p>Find the central idea that connects your message, visuals and campaign. From the first concept to the final frame, we give your brand a consistent point of view.</p><span>CREATIVE CONCEPTS · MESSAGING · VISUAL DIRECTION</span></div></details>
         <details><summary><span class="service-number">04</span><h3>Content that keeps working</h3><span class="service-toggle" aria-hidden="true">+</span></summary><div class="service-body"><p>One idea can go further. We shape product films, short edits, vertical videos and campaign variations for the places your audience watches.</p><span>PRODUCT CONTENT · REELS · AD CUTDOWNS</span></div></details>
+        <details id="web-development"><summary><span class="service-number">05</span><h3>Web development</h3><span class="service-toggle" aria-hidden="true">+</span></summary><div class="service-body"><p>A home for your brand and a clear next step for your visitors. We design and build websites that look right, work smoothly across devices and make it easy to explore your business, send an inquiry or book a call.</p><span>BUSINESS WEBSITES · LANDING PAGES · RESPONSIVE DESIGN</span></div></details>
       </div>
     </section>
     <section class="process section-pad" aria-labelledby="process-title">
@@ -82,7 +83,7 @@
           <label>Email address<input name="email" type="email" autocomplete="email" maxlength="254" required placeholder="you@yourbrand.com"></label>
         </div>
         <label>Business or website (optional)<input name="brand" maxlength="200" placeholder="Your business name or website"></label>
-        <label>What can we help with?<select name="service"><option>Let’s figure it out together</option><option>Cinematic or story-driven ad</option><option>Social media marketing</option><option>Brand or campaign direction</option><option>Content production</option></select></label>
+        <label>What can we help with?<select name="service"><option>Let’s figure it out together</option><option>Cinematic or story-driven ad</option><option>Social media marketing</option><option>Brand or campaign direction</option><option>Content production</option><option>Web development</option></select></label>
         <label>Your project idea<textarea name="idea" rows="3" minlength="10" maxlength="4000" required placeholder="What are you creating, and who is it for?"></textarea></label>
         <div class="inquiry-honeypot" aria-hidden="true"><label>Leave this blank<input name="_gotcha" tabindex="-1" autocomplete="off"></label></div>
       </fieldset>
@@ -101,8 +102,8 @@
   </dialog>
   <dialog id="scheduler-dialog" class="scheduler-dialog" aria-labelledby="scheduler-title">
     <button class="dialog-close" data-close aria-label="Close meeting scheduler">×</button>
-    <div class="scheduler-heading"><p class="eyebrow">ARCLUME STUDIO / DISCOVERY CALL</p><h2 id="scheduler-title">Choose a time that works for you.</h2><p>Pick an available 20-minute slot. Your Google Meet details will be confirmed by Calendly.</p></div>
-    <iframe id="scheduler-frame" title="Choose a meeting date and time" loading="lazy" src="https://calendly.com/moussadeqkarim/30min?embed_domain=localhost&embed_type=Inline" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+    <div class="scheduler-heading"><p class="eyebrow">ARCLUME STUDIO / DISCOVERY CALL</p><h2 id="scheduler-title">Choose a time that works for you.</h2><p>Pick an available 20-minute slot, then enter your details to book.</p><p id="scheduler-status" role="status"></p><a id="scheduler-link" class="scheduler-fallback" href="https://calendly.com/moussadeqkarim/30min" target="_blank" rel="noopener noreferrer">Open booking page in a new tab ↗</a></div>
+    <iframe id="scheduler-frame" title="Choose a meeting date and time" referrerpolicy="strict-origin-when-cross-origin"></iframe>
   </dialog>
 </body>
 </html>

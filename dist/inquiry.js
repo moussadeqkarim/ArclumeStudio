@@ -35,11 +35,37 @@
     form.hidden = false;
     form.elements.name.focus();
   });
-  document.getElementById('open-scheduler')?.addEventListener('click', () => {
-    if (scheduler?.showModal) scheduler.showModal();
+  const schedulerButton = document.getElementById('open-scheduler');
+  const schedulerFrame = document.getElementById('scheduler-frame');
+  const schedulerStatus = document.getElementById('scheduler-status');
+  const schedulerLink = document.getElementById('scheduler-link');
+  let bookingUrl;
+  try {
+    const url = new URL(settings.calendlyUrl);
+    if (url.protocol === 'https:' && url.hostname === 'calendly.com' && !url.username && !url.password) bookingUrl = url;
+  } catch { /* Missing or invalid configuration leaves booking unavailable. */ }
+  if (schedulerButton) schedulerButton.disabled = !bookingUrl;
+  if (schedulerLink && bookingUrl) schedulerLink.href = bookingUrl.href;
+  schedulerButton?.addEventListener('click', () => {
+    if (!scheduler || !schedulerFrame || !bookingUrl) return;
+    document.getElementById('contact-dialog').close();
+    scheduler.showModal();
+    if (!schedulerFrame.getAttribute('src')) {
+      const url = new URL(bookingUrl.href);
+      url.searchParams.set('embed_domain', window.location.hostname);
+      url.searchParams.set('embed_type', 'Inline');
+      schedulerStatus.textContent = 'Loading available times…';
+      schedulerFrame.src = url.href;
+    }
   });
-  scheduler?.querySelector('[data-close]')?.addEventListener('click', () => scheduler.close());
-  scheduler?.addEventListener('click', event => { if (event.target === scheduler) scheduler.close(); });
+  schedulerFrame?.addEventListener('load', () => {
+    schedulerStatus.textContent = 'Select a date and time below. If the calendar does not appear, use the booking link.';
+  });
+  scheduler?.addEventListener('close', () => {
+    const contact = document.getElementById('contact-dialog');
+    if (!contact.open) contact.showModal();
+    schedulerButton?.focus();
+  });
   document.getElementById('contact-dialog').addEventListener('close', () => {
     if (!success.hidden) {
       success.hidden = true;

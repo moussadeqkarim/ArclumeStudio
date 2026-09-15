@@ -12,7 +12,7 @@ document.querySelector('.reel-toggle')?.addEventListener('click', event => {
   const button = event.currentTarget; const paused = button.closest('.reel-panel').classList.toggle('is-paused');
   button.setAttribute('aria-pressed', String(paused)); button.textContent = paused ? 'Resume motion ▷' : 'Pause motion Ⅱ';
 });
-const serviceNames = ['Cinematic or story-driven ad', 'Social media marketing', 'Brand or campaign direction', 'Content production'];
+const serviceNames = ['Cinematic or story-driven ad', 'Social media marketing', 'Brand or campaign direction', 'Content production', 'Web development'];
 document.querySelectorAll('.service-body').forEach((body, index) => {
   const button = document.createElement('button'); button.className = 'service-cta'; button.type = 'button';
   button.dataset.contact = ''; button.dataset.service = serviceNames[index]; button.textContent = 'Discuss this service ↗'; body.append(button);
