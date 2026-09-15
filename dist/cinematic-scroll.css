@@ -1050,3 +1050,221 @@
 
 /* Match the warm rose titanium finish from the supplied iPhone reference. */
 .hero-phone { background: linear-gradient(145deg, #b26362 0%, #824653 28%, #5a303f 64%, #aa5a55 100%); }
+
+/* Keep the phone presentation true to Apple's black-on-black device shots:
+   the reel fills the display and the rose treatment stays inside the bezel. */
+.hero-phone { background: #020202; }
+.hero-phone-screen .hero-image,
+.hero-phone-screen .hero-phone-video {
+  object-fit: cover;
+  object-position: center;
+  transform: scale(1.015);
+}
+
+/* Editorial sequence layout: the copy reads as a small side note while the
+   media remains the hero. Removing the oversized glass cards keeps every
+   frame visible as the scroll choreography resolves. */
+.service-sequence .sequence-copy,
+.content-sequence .content-copy {
+  left: var(--pad);
+  right: auto;
+  top: 50%;
+  bottom: auto;
+  width: min(30vw, 360px);
+  max-width: calc(100% - (var(--pad) * 2));
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  backdrop-filter: none;
+  transform: translateY(calc(-50% + (1 - var(--scroll-progress)) * 8vh));
+}
+
+.sequence-copy h2,
+.content-copy h2 {
+  max-width: 100%;
+  font-size: clamp(44px, 5.6vw, 82px);
+  line-height: .98;
+}
+
+.sequence-copy > p:last-child,
+.content-copy > p:last-child {
+  margin-top: 18px;
+  max-width: 30ch;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.advertising-media,
+.sequence-media {
+  left: 68%;
+  width: min(62vw, 920px);
+  border-color: #ffffff20;
+  background: #101010;
+  box-shadow: 0 30px 90px #000b;
+}
+
+.advertising-media img,
+.social-master img,
+.social-frame img,
+.deliverable-frame img,
+.brand-tile-media img {
+  transform: scale(1.08);
+  transform-origin: center center;
+}
+
+.social-master img { transform: scale(1.16); }
+.social-frame img,
+.deliverable-frame img { transform: scale(1.14); }
+.brand-tile-media img { transform: scale(1.16); }
+
+.social-master {
+  left: 68%;
+  width: min(62vw, 920px);
+  border: 0;
+  border-radius: 24px;
+  box-shadow: none;
+  background: transparent;
+}
+
+.social-master::after { background: linear-gradient(180deg, transparent 58%, #0008); }
+
+.social-format { background: transparent; }
+.social-frame {
+  border: 0;
+  border-radius: 18px;
+  background: #0d0d0d;
+  box-shadow: none;
+}
+
+.deliverable-frame {
+  border: 0;
+  background: #0d0d0d;
+  box-shadow: none;
+}
+
+@media (min-width: 901px) {
+  .social-format-reel { --end-x: -6vw; }
+  .social-format-paid { --end-x: 9vw; }
+  .social-format-story { --end-x: 20vw; }
+  .social-format-content { --end-x: 31vw; }
+}
+
+@media (max-width: 900px) and (min-width: 601px) {
+  .social-format { width: clamp(108px, 14vw, 150px); }
+  .social-format-reel { --end-x: -3vw; }
+  .social-format-paid { --end-x: 10vw; }
+  .social-format-story { --end-x: 20vw; }
+  .social-format-content { --end-x: 31vw; }
+}
+
+.brand-copy {
+  left: var(--pad);
+  top: clamp(120px, 18vh, 170px);
+  width: min(32vw, 420px);
+  max-width: calc(100% - (var(--pad) * 2));
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  backdrop-filter: none;
+}
+
+.brand-copy h2 { max-width: 100%; font-size: clamp(44px, 5.6vw, 82px); }
+.brand-copy > p:last-child { max-width: 30ch; margin-top: 18px; font-size: 13px; }
+
+.brand-canvas { inset: 12% var(--pad) 7%; }
+
+.content-copy { width: min(30vw, 360px); }
+.content-canvas { inset: 8% var(--pad) 12%; }
+
+/* Keep the deliverables in the open right-hand field so the editorial copy
+   stays readable without sitting on top of the first frame. */
+@media (min-width: 901px) {
+  .deliverable-hero { --end-x: -6vw; }
+  .deliverable-reel { --end-x: 2vw; }
+  .deliverable-story { --end-x: 12vw; }
+  .deliverable-six { --end-x: 24vw; }
+  .deliverable-four { --end-x: 34vw; }
+  .deliverable-static { --end-x: 40vw; }
+}
+
+@media (max-width: 900px) and (min-width: 601px) {
+  .deliverable-hero { --end-x: -3vw; }
+  .deliverable-reel { --end-x: 2vw; }
+  .deliverable-story { --end-x: 13vw; }
+  .deliverable-six { --end-x: 24vw; }
+  .deliverable-four { --end-x: 32vw; }
+  .deliverable-static { --end-x: 38vw; }
+}
+
+.brand-motion { left: 42%; top: 6%; width: 15%; }
+.brand-copy { z-index: 6; }
+
+/* The source stills include social UI in their pixels. A restrained crop
+   removes those controls while preserving the artwork and keeping all cards
+   on one consistent format. */
+.client-image-group img {
+  object-fit: cover;
+  background: transparent;
+  transform: scale(1.12);
+}
+
+.client-image-group figure { background: transparent; }
+
+@media (max-width: 900px) and (min-width: 601px) {
+  .service-sequence .sequence-copy,
+  .content-sequence .content-copy { width: min(31vw, 300px); }
+  .sequence-copy h2,
+  .content-copy h2 { font-size: clamp(40px, 5.4vw, 68px); }
+  .advertising-media,
+  .sequence-media,
+  .social-master { left: 68%; width: min(61vw, 700px); }
+  .brand-copy { width: min(33vw, 320px); }
+}
+
+@media (max-width: 600px) {
+  .hero-phone { background: #020202; }
+  .service-sequence .sequence-copy,
+  .content-sequence .content-copy {
+    left: var(--pad);
+    top: auto;
+    bottom: 34px;
+    width: min(72vw, 300px);
+    transform: translateY(calc((1 - var(--scroll-progress)) * 5vh));
+  }
+  .sequence-copy h2,
+  .content-copy h2 { font-size: clamp(40px, 11.5vw, 62px); }
+  .advertising-media,
+  .sequence-media,
+  .social-master { left: 50%; width: 94vw; }
+  .brand-copy {
+    left: var(--pad);
+    top: 80px;
+    width: min(72vw, 300px);
+  }
+  .brand-copy h2 { font-size: clamp(40px, 11.5vw, 62px); }
+  .brand-canvas { inset: 35% 6% 7%; }
+  .content-canvas { inset: 10% 4% 27%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-phone-screen .hero-image,
+  .hero-phone-screen .hero-phone-video,
+  .service-sequence .sequence-copy,
+  .content-sequence .content-copy,
+  .brand-copy,
+  .advertising-media,
+  .sequence-media,
+  .social-master,
+  .social-format,
+  .brand-tile,
+  .content-master,
+  .deliverable,
+  .social-master img,
+  .social-frame img,
+  .deliverable-frame img,
+  .brand-tile-media img { transform: none; }
+}
