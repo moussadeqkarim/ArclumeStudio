@@ -15,7 +15,7 @@
 .gallery-toggle{display:flex;gap:18px;align-items:center;background:transparent;border:1px solid #555;border-radius:30px;padding:12px 16px;white-space:nowrap;font-size:14px}.gallery-toggle:hover{border-color:var(--accent)}
 .client-marquee{overflow-x:auto;overflow-y:hidden;scrollbar-width:thin;scrollbar-color:#777 #202020;outline-offset:-4px;overscroll-behavior-x:contain}
 .client-track{display:flex;width:max-content}.client-image-group{display:flex;flex-shrink:0;gap:16px;padding-right:16px}
-.client-image-group figure{margin:0;width:clamp(210px,23vw,325px);flex:none}.client-image-group img{width:100%;height:auto;aspect-ratio:3/4;object-fit:contain;background:#24201d;border-radius:12px;clip-path:inset(0 6% 8% 6% round 12px);margin-bottom:-8%}.client-image-group figcaption{padding:12px 2px;color:#b8b8b0;font-size:12px;letter-spacing:.4px}
+.client-image-group figure{margin:0;width:clamp(210px,23vw,325px);flex:none;overflow:hidden;border-radius:12px}.client-image-group img{width:100%;height:auto;aspect-ratio:3/4;object-fit:contain;background:#24201d;border-radius:12px;transform:scale(1.12);transform-origin:center center}.client-image-group figcaption{padding:12px 2px;color:#b8b8b0;font-size:12px;letter-spacing:.4px}
 .client-marquee.is-ready{overflow-x:hidden}.client-marquee.is-ready .client-track{animation:client-drift 115s linear infinite;will-change:transform}
 .client-marquee.is-ready:hover,.client-marquee.is-ready:focus-visible,.client-marquee.is-paused{overflow-x:auto}
 .client-marquee:hover .client-track,.client-marquee:focus-within .client-track,.client-marquee.is-paused .client-track{animation-play-state:paused}
