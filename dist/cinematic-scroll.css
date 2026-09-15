@@ -306,7 +306,8 @@
   background: #1b1b1b;
   box-shadow: 0 25px 70px #000b;
   transform: translate(-50%, -50%) translateX(calc(var(--end-x) * var(--scroll-progress))) translateY(calc(var(--end-y) * var(--scroll-progress))) rotate(calc(var(--end-r) * var(--scroll-progress))) scale(calc(.42 + var(--scroll-progress) * .58));
-  opacity: calc(.08 + var(--scroll-progress) * .92);
+  /* Hold the intact campaign image before revealing the split cards. */
+  opacity: clamp(0, calc((var(--scroll-progress) - .08) * 2), 1);
   will-change: transform, opacity;
 }
 
@@ -437,7 +438,8 @@
   background: #161616;
   box-shadow: 0 24px 65px #000;
   transform: translate(-50%, -50%) translateX(calc(var(--end-x) * var(--scroll-progress))) translateY(calc(var(--end-y) * var(--scroll-progress))) rotate(calc(var(--end-r) * var(--scroll-progress))) scale(calc(.42 + var(--scroll-progress) * .58));
-  opacity: calc(.08 + var(--scroll-progress) * .92);
+  /* Match the social sequence: no ghost cards over the intact master. */
+  opacity: clamp(0, calc((var(--scroll-progress) - .08) * 2), 1);
   will-change: transform, opacity;
 }
 
