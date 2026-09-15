@@ -1270,6 +1270,8 @@
   }
   .brand-copy h2 { font-size: clamp(40px, 11.5vw, 62px); }
   .brand-canvas { inset: 35% 6% 7%; }
+  /* Keep the motion tile below the heading while the canvas assembles. */
+  .brand-motion { left: 8%; top: 35%; width: 27%; height: 21%; }
   .content-canvas { inset: 10% 4% 27%; }
   .content-master { left: 50%; }
   .deliverable-hero { --end-y: 4vh; }
