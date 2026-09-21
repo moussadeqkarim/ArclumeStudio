@@ -121,64 +121,6 @@
   pointer-events: none;
 }
 
-.hero-keywords {
-  position: absolute;
-  inset: 0;
-  z-index: 3;
-  overflow: hidden;
-  pointer-events: none;
-}
-
-.hero-keyword {
-  --x: 0px;
-  --y: 0px;
-  --drift-x: 0px;
-  --drift-y: 0px;
-  --rotate: 0deg;
-  position: absolute;
-  left: var(--left);
-  top: var(--top);
-  display: block;
-  width: max-content;
-  padding: 9px 13px 9px 10px;
-  border: 1px solid #ffffff1c;
-  border-radius: 999px;
-  background: #1111119e;
-  box-shadow: 0 10px 28px #0008, inset 0 0 18px #ffffff08;
-  backdrop-filter: blur(8px);
-  color: #e1e1dc;
-  font-size: clamp(10px, 1vw, 14px);
-  font-weight: 600;
-  letter-spacing: .22em;
-  line-height: 1;
-  opacity: .78;
-  transform: translate3d(
-    calc(var(--x) + var(--drift-x) * var(--scroll-progress)),
-    calc(var(--y) + var(--drift-y) * var(--scroll-progress)),
-    0
-  ) rotate(var(--rotate));
-  transition: opacity .22s ease, filter .22s ease;
-  will-change: transform, opacity;
-}
-
-.hero-keyword::before {
-  content: '';
-  display: inline-block;
-  width: 6px;
-  height: 6px;
-  margin: 0 9px 2px 0;
-  border-radius: 50%;
-  background: var(--accent);
-  box-shadow: 0 0 12px #f3cf5745;
-}
-
-.keyword-film { --left: 7%; --top: 25%; --drift-x: 4vw; --drift-y: -4vh; --rotate: -6deg; }
-.keyword-social { --left: 84%; --top: 24%; --drift-x: -3vw; --drift-y: -3vh; --rotate: 6deg; }
-.keyword-story { --left: 6%; --top: 46%; --drift-x: 5vw; --drift-y: 5vh; --rotate: -4deg; }
-.keyword-strategy { --left: 8%; --top: 68%; --drift-x: 6vw; --drift-y: 3vh; --rotate: 5deg; }
-.keyword-content { --left: 83%; --top: 61%; --drift-x: -5vw; --drift-y: 5vh; --rotate: -5deg; }
-.keyword-web { --left: 82%; --top: 79%; --drift-x: -4vw; --drift-y: -4vh; --rotate: 5deg; }
-
 .object-halo {
   position: absolute;
   width: min(75vw, 1100px);
@@ -1324,6 +1266,90 @@
   .sequence-media,
   .social-master { left: 68%; width: min(61vw, 700px); }
   .brand-copy { width: min(33vw, 320px); }
+}
+
+/* Service-led hero: make the offer the first thing visitors understand. */
+.hero.cinematic-sequence { height: 185svh; }
+.hero-sticky { display: block; }
+.hero-copy .eyebrow { top: clamp(96px, 12vh, 132px); }
+.hero-copy h1 {
+  top: clamp(178px, 25vh, 270px);
+  max-width: 980px;
+  font-size: clamp(54px, 7.6vw, 112px);
+}
+.hero-bottom {
+  bottom: clamp(32px, 7vh, 72px);
+  align-items: flex-end;
+}
+.hero-service-loop {
+  position: absolute;
+  top: clamp(430px, 60vh, 600px);
+  left: 0;
+  right: 0;
+  z-index: 2;
+}
+.hero-loop-label {
+  width: min(88vw, 1180px);
+  margin: 0 auto 16px;
+  color: #999994;
+  font-size: 10px;
+  letter-spacing: .22em;
+  text-align: center;
+  text-transform: uppercase;
+}
+.hero-loop-window {
+  width: 100%;
+  overflow: hidden;
+  border-top: 1px solid #ffffff18;
+  border-bottom: 1px solid #ffffff18;
+  mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+}
+.hero-loop-track {
+  display: flex;
+  width: max-content;
+  animation: hero-loop-slide 28s linear infinite;
+  will-change: transform;
+}
+.hero-loop-group {
+  display: flex;
+  align-items: center;
+  gap: clamp(22px, 3vw, 50px);
+  padding: 23px clamp(22px, 4vw, 70px);
+}
+.hero-loop-group span {
+  color: #e8e8e3;
+  font-size: clamp(32px, 5.2vw, 78px);
+  font-weight: 500;
+  letter-spacing: -.06em;
+  line-height: 1;
+  white-space: nowrap;
+}
+.hero-loop-group i {
+  color: var(--accent);
+  font-size: clamp(24px, 3.4vw, 52px);
+  font-style: normal;
+}
+@keyframes hero-loop-slide {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@media (max-width: 600px) {
+  .hero.cinematic-sequence { height: 135svh; }
+  .hero-copy .eyebrow { top: 94px; padding: 0 24px; }
+  .hero-copy h1 {
+    top: 158px;
+    font-size: clamp(42px, 11.5vw, 60px);
+    line-height: 1.04;
+  }
+  .hero-service-loop { top: 330px; }
+  .hero-loop-label { margin-bottom: 12px; font-size: 8px; }
+  .hero-loop-group { gap: 16px; padding: 18px 20px; }
+  .hero-loop-group span { font-size: 31px; }
+  .hero-loop-group i { font-size: 22px; }
+  .hero-loop-window { mask-image: linear-gradient(90deg, transparent, #000 14%, #000 86%, transparent); }
+  .hero-bottom { bottom: 26px; }
+  .hero-bottom p { font-size: 14px; }
 }
 
 @media (max-width: 600px) {
