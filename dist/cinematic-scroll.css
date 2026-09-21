@@ -121,6 +121,62 @@
   pointer-events: none;
 }
 
+.hero-keywords {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.hero-keyword {
+  --x: 0px;
+  --y: 0px;
+  --drift-x: 0px;
+  --drift-y: 0px;
+  --rotate: 0deg;
+  position: absolute;
+  left: var(--left);
+  top: var(--top);
+  display: block;
+  color: #d7d7d2;
+  font-size: clamp(10px, 1vw, 14px);
+  font-weight: 600;
+  letter-spacing: .22em;
+  line-height: 1;
+  opacity: .56;
+  transform: translate3d(
+    calc(var(--x) + var(--drift-x) * var(--scroll-progress)),
+    calc(var(--y) + var(--drift-y) * var(--scroll-progress)),
+    0
+  ) rotate(var(--rotate));
+  transition: opacity .22s ease, filter .22s ease;
+  will-change: transform, opacity;
+}
+
+.hero-keyword::before {
+  content: '';
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  margin: 0 9px 2px 0;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 12px #f3cf5745;
+}
+
+.hero-keyword.is-hidden {
+  opacity: 0;
+  filter: blur(5px);
+}
+
+.keyword-film { --left: 7%; --top: 29%; --drift-x: 7vw; --drift-y: -7vh; --rotate: -8deg; }
+.keyword-social { --left: 86%; --top: 25%; --drift-x: -5vw; --drift-y: -4vh; --rotate: 7deg; }
+.keyword-story { --left: 5%; --top: 46%; --drift-x: 8vw; --drift-y: 8vh; --rotate: -4deg; }
+.keyword-strategy { --left: 7%; --top: 65%; --drift-x: 9vw; --drift-y: 5vh; --rotate: 6deg; }
+.keyword-content { --left: 85%; --top: 61%; --drift-x: -7vw; --drift-y: 7vh; --rotate: -6deg; }
+.keyword-web { --left: 86%; --top: 80%; --drift-x: -4vw; --drift-y: -8vh; --rotate: 5deg; }
+
 .object-halo {
   position: absolute;
   width: min(75vw, 1100px);
@@ -1050,6 +1106,24 @@
   .hero-copy h1 { top: 67vh; font-size: clamp(50px, 5.2vw, 64px); line-height: 1.03; }
   .hero-bottom { bottom: 30px; }
   .hero-bottom > p { font-size: 12px; }
+}
+
+@media (max-width: 600px) {
+  .hero-keyword {
+    font-size: 8px;
+    letter-spacing: .16em;
+  }
+  .hero-keyword::before {
+    width: 4px;
+    height: 4px;
+    margin-right: 6px;
+  }
+  .keyword-film { --left: 3%; --top: 31%; --drift-x: 18vw; --drift-y: -4vh; }
+  .keyword-social { --left: 69%; --top: 27%; --drift-x: -15vw; --drift-y: -2vh; }
+  .keyword-story { --left: 6%; --top: 20%; --drift-x: 6vw; --drift-y: 7vh; }
+  .keyword-strategy { --left: 3%; --top: 68%; --drift-x: 19vw; --drift-y: 3vh; }
+  .keyword-content { --left: 69%; --top: 66%; --drift-x: -18vw; --drift-y: 5vh; }
+  .keyword-web { --left: 58%; --top: 82%; --drift-x: 12vw; --drift-y: -5vh; }
 }
 
 /* Only the masked screen paints video; the transparent bezel sits above it. */
