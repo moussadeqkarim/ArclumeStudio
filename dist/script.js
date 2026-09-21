@@ -37,28 +37,6 @@ if (!reducedMotion.matches && 'IntersectionObserver' in window) {
    happen inside one rAF so the animation stays compositor-friendly. */
 const cinematicSequences = [...document.querySelectorAll('[data-sequence]')];
 if (cinematicSequences.length) {
-  const heroKeywords = [...document.querySelectorAll('.hero-keyword')];
-  const heroExclusions = () => [
-    document.querySelector('.hero-phone-wrap'),
-    document.querySelector('.hero-copy .eyebrow'),
-    document.querySelector('.hero-copy h1'),
-    document.querySelector('.hero-copy .hero-bottom')
-  ].filter(Boolean).map(element => {
-    const rect = element.getBoundingClientRect();
-    return { left: rect.left - 8, top: rect.top - 8, right: rect.right + 8, bottom: rect.bottom + 8 };
-  });
-  const updateHeroKeywords = () => {
-    if (!heroKeywords.length) return;
-    const exclusions = heroExclusions();
-    heroKeywords.forEach(keyword => {
-      const rect = keyword.getBoundingClientRect();
-      const overlaps = exclusions.some(exclusion => (
-        rect.left < exclusion.right && rect.right > exclusion.left &&
-        rect.top < exclusion.bottom && rect.bottom > exclusion.top
-      ));
-      keyword.classList.toggle('is-hidden', overlaps);
-    });
-  };
   let ticking = false;
   let viewportHeight = window.innerHeight;
   const updateSequences = () => {
@@ -71,7 +49,6 @@ if (cinematicSequences.length) {
       /* Keep the legacy variable available for any existing hero overrides. */
       if (sequence.dataset.sequence === 'hero') sequence.style.setProperty('--hero-progress', value);
     });
-    updateHeroKeywords();
     ticking = false;
   };
   const requestSequenceUpdate = () => {
