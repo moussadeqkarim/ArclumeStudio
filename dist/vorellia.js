@@ -9,6 +9,8 @@
     toggle.setAttribute('aria-pressed', String(paused));
     toggle.textContent = paused ? 'Resume motion ▷' : 'Pause motion Ⅱ';
   });
+  // Screen previews stay fixed: avoid scroll measurements and rescaling text.
+  if (feature?.classList.contains("web-feature")) return;
   let pending = false;
   const update = () => {
     pending = false;
