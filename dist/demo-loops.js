@@ -26,7 +26,7 @@
     video.insertAdjacentElement("afterend", button);
     button.addEventListener("click", () => {
       const state = states.get(video);
-      if (motion.matches) { video.controls = true; video.play().catch(() => {}); return; }
+      if (motion.matches) { video.controls = true; if (video.paused) video.play().catch(() => {}); else video.pause(); return; }
       state.paused = !state.paused;
       sync(video);
     });
