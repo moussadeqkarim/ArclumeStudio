@@ -22,7 +22,12 @@ serviceDetails.forEach(detail => detail.addEventListener('toggle', () => {
 }));
 document.querySelectorAll('.service-body').forEach((body, index) => {
   const button = document.createElement('button'); button.className = 'service-cta'; button.type = 'button';
-  button.dataset.contact = ''; button.dataset.service = serviceNames[index]; button.textContent = 'Discuss this service ↗'; body.append(button);
+  button.dataset.contact = ''; button.dataset.service = serviceNames[index];
+  button.append(document.createTextNode('Discuss this service '));
+  const arrow = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  arrow.setAttribute('class', 'arrow-icon'); arrow.setAttribute('viewBox', '0 0 16 16'); arrow.setAttribute('fill', 'none'); arrow.setAttribute('aria-hidden', 'true');
+  arrow.innerHTML = '<path d="M4 12 12 4M5 4h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />';
+  button.append(arrow); body.append(button);
 });
 if (!reducedMotion.matches && 'IntersectionObserver' in window) {
   document.documentElement.classList.add('motion-enabled');

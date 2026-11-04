@@ -140,7 +140,11 @@
       sending = false;
       fields.disabled = false;
       button.disabled = false;
-      button.textContent = 'Send inquiry ↗';
+      button.replaceChildren(document.createTextNode('Send inquiry '));
+      const arrow = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+      arrow.setAttribute('class', 'arrow-icon'); arrow.setAttribute('viewBox', '0 0 16 16'); arrow.setAttribute('fill', 'none'); arrow.setAttribute('aria-hidden', 'true');
+      arrow.innerHTML = '<path d="M4 12 12 4M5 4h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />';
+      button.append(arrow);
       form.removeAttribute('aria-busy');
     }
   });
