@@ -1,0 +1,40 @@
+/* Vorellia motion studies: real type and imagery, rendered by the browser. */
+.motion-showcase{margin:12px 0 48px;--motion-yellow:#e8d35e}
+.motion-toolbar{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:14px;font-size:13px;color:var(--muted)}
+.motion-pause{background:transparent;color:var(--ink);border:1px solid #a9aba3;border-radius:99px;padding:8px 16px;min-height:44px;font-size:12px}
+.motion-canvas{position:relative;height:clamp(410px,34vw,540px);overflow:hidden;border-radius:6px;background:#efefeb;isolation:isolate}
+.motion-scene{position:absolute;inset:0;display:grid;grid-template-columns:.85fr 1.25fr;align-items:center;gap:6%;padding:5%}
+.motion-copy{position:relative;z-index:2;min-width:0}
+.motion-copy h2{font-size:clamp(32px,3.8vw,60px);line-height:1.04;letter-spacing:-.055em;margin-bottom:20px}
+.motion-copy p{font-size:14px;line-height:1.6;color:var(--muted);max-width:31ch}
+.motion-copy .text-action{margin-top:20px;font-size:13px}
+.motion-art{min-width:0;position:relative;width:100%;height:100%;max-height:370px;display:flex;align-items:center;justify-content:center}
+.browser-study{width:100%;background:var(--paper);border:1px solid #c6c7bd;border-radius:7px;overflow:hidden;box-shadow:0 20px 40px #20211f12;transform:rotate(-3deg)}
+.browser-bar{height:24px;border-bottom:1px solid #deded9;display:flex;gap:4px;align-items:center;padding:0 10px}.browser-bar i{width:4px;height:4px;border-radius:50%;background:#aaa;display:block}
+.browser-page{position:relative;padding:20px 24px 24px;overflow:hidden;min-height:240px}
+.browser-brand{display:flex;justify-content:space-between;align-items:center;font-size:11px;font-weight:600;letter-spacing:-.03em}.browser-brand span{font-size:7px;font-weight:400;letter-spacing:0}
+.browser-headline{position:relative;z-index:1;font-size:clamp(34px,4.5vw,72px);font-weight:500;letter-spacing:-.065em;line-height:.96;margin:30px 0 22px;max-width:8ch}
+.browser-swatch{position:absolute;width:39%;height:64%;right:0;bottom:0;background:var(--motion-yellow)}
+.browser-bottom{position:relative;display:flex;justify-content:space-between;gap:20px;font-size:8px;line-height:1.5}.browser-bottom span:last-child{align-self:end;color:var(--ink)}
+.campaign-poster{position:relative;width:76%;height:100%;max-height:350px;background:#d7c4ab;overflow:hidden;transform:rotate(3deg)}
+.campaign-poster img{height:100%;object-fit:cover;object-position:50% 47%;transform:scale(1.22)}
+.content-format{position:absolute;width:39%;height:76%;overflow:hidden;background:#d9cfc3;box-shadow:0 12px 24px #20211f14}
+.content-format img{height:100%;object-fit:cover;transform:scale(1.22)}.content-format span{position:absolute;left:10px;bottom:10px;background:var(--paper);padding:4px 8px;font-size:9px;color:var(--ink)}
+.format-film{left:2%;top:20%;height:51%;width:55%;transform:rotate(-8deg);z-index:1}.format-film img{object-position:50% 45%}
+.format-story{left:34%;top:7%;transform:rotate(2deg);z-index:2}.format-detail{right:0;top:21%;height:66%;transform:rotate(8deg);z-index:3}
+.motion-controls{display:none;gap:6px;padding-top:15px;flex-wrap:wrap}.is-enhanced .motion-controls{display:flex}
+.motion-select{display:flex;align-items:center;gap:10px;min-height:48px;padding:10px 16px;border-radius:99px;background:transparent;color:var(--muted);border:1px solid transparent;font-size:13px;transition:color .2s,background .2s}
+.motion-select[aria-pressed=true]{background:var(--ink);color:var(--paper)}
+.motion-select:hover{border-color:#a9aba3}.motion-select span{font-size:10px;opacity:.7}
+.motion-footnote{margin-top:14px;font-size:11px;color:var(--muted)}
+.work-pair{display:grid;grid-template-columns:1.1fr 1fr;gap:6vw;align-items:start}
+.work-feature{min-width:0}.work-art{position:relative;display:flex;align-items:center;justify-content:center;aspect-ratio:1.35;overflow:hidden;background:var(--ink);border-radius:6px;color:var(--paper)}
+.work-type{position:relative;padding:10%;font-size:clamp(48px,6.5vw,100px);line-height:.9;letter-spacing:-.07em;z-index:1;width:100%}.work-type em{font-style:normal;color:var(--accent);display:block;transform:translateX(12%);transition:transform .65s cubic-bezier(.22,1,.36,1)}
+.work-feature:hover .work-type em{transform:translateX(20%)}.work-feature:focus-visible .work-type em{transform:translateX(20%)}
+.work-photo{background:#d2c1a8}.work-photo img{width:100%;height:100%;object-fit:cover;object-position:50% 48%;transform:scale(1.22)}.work-feature:nth-child(2){margin-top:75px}
+.work-feature h3{font-size:27px;margin:20px 0 9px}.work-feature p{font-size:14px;color:var(--muted);max-width:42ch;line-height:1.6}.work-feature .project-read{min-height:44px;padding:12px 0 6px;margin-top:8px}
+.motion-intro{max-width:800px;padding-top:65px;padding-bottom:32px}.motion-intro h1{font-size:clamp(46px,6.5vw,96px);margin:20px 0}.motion-intro>p{max-width:55ch;color:var(--muted)}
+.motion-detail{padding-bottom:75px}.motion-detail .motion-showcase{margin:0}.motion-deliverables{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;padding-top:42px}.motion-deliverables h2{font-size:25px;margin-bottom:14px}.motion-deliverables p{font-size:15px;line-height:1.65;color:var(--muted);max-width:42ch}
+@media(max-width:760px){.motion-showcase{margin:6px 0 32px}.motion-canvas{height:610px}.motion-scene{grid-template-columns:1fr;grid-template-rows:auto minmax(0,1fr);gap:26px;padding:28px 24px}.motion-copy h2{font-size:38px;margin-bottom:14px}.motion-copy p{font-size:14px;max-width:34ch}.motion-copy .text-action{margin-top:12px;min-height:44px}.motion-art{max-width:420px;max-height:285px;margin:auto}.browser-page{padding:18px;min-height:220px}.browser-headline{font-size:51px;margin:24px 0 20px}.campaign-poster{width:70%;max-height:270px}.campaign-signature{font-size:36px}.campaign-note{font-size:17px;padding:14px 18px;bottom:5%}.motion-select{gap:7px;font-size:12px;padding:9px 12px}.motion-controls{gap:3px;justify-content:space-between}.motion-footnote{font-size:11px}.work-pair{grid-template-columns:1fr;gap:36px}.work-feature:nth-child(2){margin-top:0}.work-type{font-size:clamp(55px,13vw,90px)}.work-feature h3{font-size:25px}.motion-intro{padding-top:32px}.motion-detail{padding-bottom:45px}.motion-deliverables{grid-template-columns:1fr;gap:28px;padding-top:32px}}
+@media(max-width:360px){.motion-scene{padding:24px 18px;gap:22px}.motion-copy h2{font-size:34px}.motion-select{padding:9px 10px;gap:5px;font-size:11px}.browser-headline{font-size:44px}.motion-canvas{height:600px}}
+@media(prefers-reduced-motion:reduce){.work-type em{transition:none}.browser-study,.campaign-poster,.content-format{transform:none}}

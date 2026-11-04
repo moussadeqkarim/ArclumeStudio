@@ -1,0 +1,4 @@
+GSAP core 3.15.0 — Copyright 2026 GreenSock. All rights reserved.
+Source: https://gsap.com
+License: https://gsap.com/standard-license
+The original license notice is preserved in gsap.min.js.
