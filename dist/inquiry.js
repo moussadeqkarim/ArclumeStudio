@@ -105,7 +105,7 @@
     payload.set('subject', emailSubject);
     if (!endpoint && emailFallback) {
       window.location.href = `mailto:${email}?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
-      showStatus(`Your email app should open with a draft. Press Send to contact Arclume at ${email}.`, 'pending');
+      showStatus(`Your email app should open with a draft. Press Send to contact Vorellia at ${email}.`, 'pending');
       return;
     }
     sending = true;

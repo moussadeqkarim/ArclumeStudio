@@ -1,6 +1,6 @@
-# Arclume Studio — working name
+# Vorellia
 
-An independent creative agency website for cinematic advertising, social media marketing, campaign direction and content production. Black, white and yellow with restrained motion and a continuous vertical services reel.
+An independent creative studio website for cinematic advertising, social media marketing, campaign direction, content production and websites. Photography-led editorial design, restrained motion, and responsive layouts. See [VORELLIA-DESIGN.md](VORELLIA-DESIGN.md) for the visual system and validation notes.
 
 ## Preview locally
 
