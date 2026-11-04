@@ -9,6 +9,22 @@
 .motion-copy p{font-size:14px;line-height:1.6;color:var(--muted);max-width:31ch}
 .motion-copy .text-action{margin-top:20px;font-size:13px}
 .motion-art{min-width:0;position:relative;width:100%;height:100%;max-height:370px;display:flex;align-items:center;justify-content:center}
+.motion-art{perspective:900px;transform-style:preserve-3d}
+.sculpture-stage{position:relative;width:100%;height:100%;min-height:220px;isolation:isolate;perspective:800px}
+.sculpture-stage canvas{display:block;position:absolute;inset:0;width:100%;height:100%;z-index:2;touch-action:pan-y}
+.sculpture-shadow{position:absolute;left:28%;right:28%;height:14px;bottom:8%;border-radius:50%;background:#20211f18;filter:blur(9px);z-index:0}
+.sculpture-caption{position:absolute;left:20px;bottom:8px;color:var(--muted);font-size:10px;letter-spacing:.03em;z-index:3;pointer-events:none}
+.ribbon-fallback{position:absolute;inset:12% 22%;transform-style:preserve-3d;transform:rotateX(45deg) rotateY(-30deg);animation:sculpture-turn 18s linear infinite;animation-play-state:paused}
+.ribbon-fallback i{position:absolute;inset:0;border:26px solid #d4bd53;border-radius:50%;box-shadow:inset 4px 6px 0 #fff7,5px 2px 0 #796822;transform:rotateY(0)}
+.ribbon-fallback i:nth-child(2){transform:rotateY(65deg)}.ribbon-fallback i:nth-child(3){transform:rotateX(65deg)}
+[data-renderer=webgl] .ribbon-fallback{display:none}
+[data-playing=true][data-renderer=fallback] .ribbon-fallback{animation-play-state:running}
+[data-playing=false] .ribbon-fallback{animation-play-state:paused}
+@keyframes sculpture-turn{from{transform:rotateX(45deg) rotateY(-30deg)}to{transform:rotateX(45deg) rotateY(330deg)}}
+.work-live{width:100%;height:clamp(300px,28vw,420px);aspect-ratio:auto}.work-live .sculpture-stage{position:absolute;inset:0;height:100%}.work-live .sculpture-caption{color:#e7e7df;left:24px;bottom:18px;font-size:13px}.work-live .sculpture-shadow{background:#0007;bottom:11%}
+.work-motion-controls{display:flex;align-items:center;justify-content:space-between;gap:15px;padding-top:18px;color:var(--muted);font-size:12px}
+.work-motion-pause{background:transparent;border:1px solid #a9aba3;border-radius:99px;min-height:44px;padding:8px 16px;color:var(--ink);font-size:12px}
+.campaign-poster,.content-format{backface-visibility:visible;transform-style:preserve-3d}
 .browser-study{width:100%;background:var(--paper);border:1px solid #c6c7bd;border-radius:7px;overflow:hidden;box-shadow:0 20px 40px #20211f12;transform:rotate(-3deg)}
 .browser-bar{height:24px;border-bottom:1px solid #deded9;display:flex;gap:4px;align-items:center;padding:0 10px}.browser-bar i{width:4px;height:4px;border-radius:50%;background:#aaa;display:block}
 .browser-page{position:relative;padding:20px 24px 24px;overflow:hidden;min-height:240px}
@@ -38,3 +54,5 @@
 @media(max-width:760px){.motion-showcase{margin:6px 0 32px}.motion-canvas{height:610px}.motion-scene{grid-template-columns:1fr;grid-template-rows:auto minmax(0,1fr);gap:26px;padding:28px 24px}.motion-copy h2{font-size:38px;margin-bottom:14px}.motion-copy p{font-size:14px;max-width:34ch}.motion-copy .text-action{margin-top:12px;min-height:44px}.motion-art{max-width:420px;max-height:285px;margin:auto}.browser-page{padding:18px;min-height:220px}.browser-headline{font-size:51px;margin:24px 0 20px}.campaign-poster{width:70%;max-height:270px}.campaign-signature{font-size:36px}.campaign-note{font-size:17px;padding:14px 18px;bottom:5%}.motion-select{gap:7px;font-size:12px;padding:9px 12px}.motion-controls{gap:3px;justify-content:space-between}.motion-footnote{font-size:11px}.work-pair{grid-template-columns:1fr;gap:36px}.work-feature:nth-child(2){margin-top:0}.work-type{font-size:clamp(55px,13vw,90px)}.work-feature h3{font-size:25px}.motion-intro{padding-top:32px}.motion-detail{padding-bottom:45px}.motion-deliverables{grid-template-columns:1fr;gap:28px;padding-top:32px}}
 @media(max-width:360px){.motion-scene{padding:24px 18px;gap:22px}.motion-copy h2{font-size:34px}.motion-select{padding:9px 10px;gap:5px;font-size:11px}.browser-headline{font-size:44px}.motion-canvas{height:600px}}
 @media(prefers-reduced-motion:reduce){.work-type em{transition:none}.browser-study,.campaign-poster,.content-format{transform:none}}
+@media(max-width:760px){.motion-art{perspective:700px}.sculpture-caption{left:0;font-size:9px;bottom:0}.work-live .sculpture-caption{left:18px;bottom:15px;font-size:12px}.work-live{max-height:360px;aspect-ratio:1.25}.ribbon-fallback i{border-width:20px}}
+@media(prefers-reduced-motion:reduce){.ribbon-fallback{animation:none!important}}
