@@ -34,7 +34,7 @@
     const button = document.createElement("button");
     button.type = "button";
     button.className = "preview-toggle";
-    const name = video.closest("article").querySelector("h2").textContent;
+    const name = video.dataset.demoName || video.closest("article").querySelector("h2").textContent;
     states.set(video, {visible:false, wanted:!motion.matches && !connection?.saveData, button, name});
     video.insertAdjacentElement("afterend", button);
     button.addEventListener("click", () => {
