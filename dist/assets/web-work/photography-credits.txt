@@ -1,0 +1,38 @@
+# Product photography provenance
+
+Verified from individual Wikimedia Commons file pages on 2026-11-03. The reference kit grants no license to extract the designer cutouts as storefront photography, so its recording/frames are used only for private reference analysis and comparison.
+
+| Local source                        | Depicted object                                                  | Photographer            | Source and license                                                                                                   |
+| ----------------------------------- | ---------------------------------------------------------------- | ----------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| yeezy-original.jpg                  | Adidas Yeezy 350 V2 EF2905, pair                                 | Jacek Halicki           | https://commons.wikimedia.org/wiki/File:2023_Adidas_Yeezy_350_V2_EF2905_(1).jpg — CC BY-SA 4.0                       |
+| yeezy-2-original.jpg                | Same model, second camera view                                   | Jacek Halicki           | https://commons.wikimedia.org/wiki/File:2023_Adidas_Yeezy_350_V2_EF2905_(2).jpg — CC BY-SA 4.0                       |
+| air-max-720-original.jpg            | Nike Air Max 720, pair                                           | Maximiliaan Ronaldszoon | https://commons.wikimedia.org/wiki/File:A_pair_of_Nike_Air_Max_720.jpg — CC BY-SA 4.0                                |
+| jordan-1-original.jpg               | 1985 Air Jordan 1, red/white pair                                | Smithsonian Institution | https://commons.wikimedia.org/wiki/File:1985_Air_Jordan_1s.jpg — CC0 1.0                                             |
+| sesame-original.jpg                 | Adidas Yeezy Boost 350 V2 Sesame, pair                           | Jacek Halicki           | https://commons.wikimedia.org/wiki/File:2023_Adidas_Yeezy_Boost_350_V2_Sesame.jpg — CC BY-SA 4.0                     |
+| vapor-glove-original.png (legacy)   | Merrell Vapor Glove 3, charcoal/orchid pair                      | Tiia Monto              | https://commons.wikimedia.org/wiki/File:Merrell_Vapor_Glove_3_shoes.png — CC BY-SA 4.0                               |
+| on-pair-reconstructed.png (retired) | White/black On running-shoe pair reconstructed in the repair kit | Vorellia supplied asset | Local client-supplied repair-kit asset — retained for reference, not active in the hero                              |
+| airforce-original.jpg               | Nike Air Force 1 high-top, white/brown                           | Merci0230               | https://commons.wikimedia.org/wiki/File:Airforce1.jpg — CC BY-SA 4.0                                                 |
+| stan-smith-original.png             | Adidas Stan Smith, original white/green                          | Raizin                  | https://commons.wikimedia.org/wiki/File:Stan_Smith_white_and_green.png — CC BY-SA 3.0 (chosen from offered licenses) |
+
+## License links and changes
+
+- CC BY-SA 4.0: https://creativecommons.org/licenses/by-sa/4.0/
+- CC BY-SA 3.0: https://creativecommons.org/licenses/by-sa/3.0/
+- CC0 1.0: https://creativecommons.org/publicdomain/zero/1.0/
+- All corresponding resized, cropped, segmented and WebP-converted product derivatives are distributed under the same license as their source image. No brand endorsement is implied.
+- The runtime credits page identifies photographer, source, license, and transformations. Product details also link directly to the individual source.
+- Background segmentation alters the photographic backdrop, not shoe geometry or colors. Early manually clipped preview was replaced by the locally segmented final cutout.
+- The current hero uses `air-max-720-cutout-trim.png`, a locally segmented derivative of the licensed `air-max-720-original.jpg` pair photograph, as the distinct replacement for the softer reconstructed On visual. The reconstructed On PNG remains in `public/products/` for provenance but is not active.
+- `air-max-720-cutout-trim.png` preserves the source pair's proportions and three-quarter camera direction while removing the original warm backdrop; it is distributed under the source image's CC BY-SA 4.0 license.
+- `jordan-1-cutout-trim.png` is a transparent derivative of the Smithsonian's CC0 pair photograph; it is used as the red/white Air Jordan 1 hero asset without altering shoe geometry.
+- Air Force 1 and Stan Smith remain catalog-only until verified pair assets are supplied; they are marked `needs-pair-asset` and excluded from the hero carousel.
+- Rotation and compositing are flat photographic plane transforms, never a claim of 3D or a synthesized alternate camera angle.
+- A third grey 350 V2 view was not downloaded (remote rate limit); it is not referenced or represented as present.
+
+## Other assets
+
+Barlow Condensed by Jeremy Tribby: SIL Open Font License, bundled by @fontsource/barlow-condensed. Phosphor Icons: MIT. These are self-hosted dependencies. Plain shape styling is limited to interface elements and soft contact shadows.
+
+@imgly/background-removal-node is an AGPL development utility used locally to prepare licensed image derivatives. It is not imported by application code or required in the browser. Its model is downloaded locally, not used to generate new product imagery.
+
+This provenance log records verified file-page permissions, not a claim of affiliation or trademark ownership.
