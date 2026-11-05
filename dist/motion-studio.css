@@ -69,3 +69,26 @@
 @media(max-width:760px){.motion-art{perspective:700px}.sculpture-caption{left:0;font-size:9px;bottom:0}.work-live .sculpture-caption{left:18px;bottom:15px;font-size:12px}.work-live{max-height:360px;aspect-ratio:1.25}.ribbon-fallback i{border-width:20px}}
 @media(max-width:760px){.sculpture-stage-dna{min-height:270px}.dna-label{font-size:9px}.dna-label-a{right:0;top:16%}.dna-label-b{left:0;top:45%}.dna-label-c{right:0;bottom:20%}.dna-fallback{inset:6% 27%}}
 @media(prefers-reduced-motion:reduce){.ribbon-fallback{animation:none!important}}
+/* Reference direction: an oversized diagonal particle helix, cropped by the hero. */
+.opening{padding-top:20px}.opening .motion-showcase{margin-top:15px}
+.motion-canvas:has([data-scene=dna]:not([hidden])){height:clamp(570px,calc(100svh - 190px),850px);background:var(--paper);border-radius:0}
+.motion-scene[data-scene=dna]{grid-template-columns:.9fr 1.1fr;gap:0;padding:5% 0}
+.motion-scene[data-scene=dna] .motion-copy{max-width:460px}
+.opening .motion-copy h1{font-size:clamp(48px,5.4vw,82px);line-height:1.03;letter-spacing:-.06em;margin-bottom:30px}
+.motion-scene[data-scene=dna] .motion-art{position:absolute;right:-5%;top:-30%;width:67%;height:160%;max-height:none;perspective:none}
+.sculpture-stage-dna{height:100%;min-height:0}
+.sculpture-stage-dna .sculpture-caption,.sculpture-stage-dna .sculpture-shadow,.dna-label{display:none}
+.motion-showcase:has([data-scene=dna]:not([hidden])) .motion-toolbar{position:absolute;right:12px;bottom:110px;z-index:4;margin:0}
+.motion-showcase{position:relative}.motion-showcase:has([data-scene=dna]:not([hidden])) .motion-toolbar>p{display:none}
+.motion-overline{color:var(--muted)!important;letter-spacing:.06em;font-size:10px!important;margin-bottom:26px}
+@media(max-width:760px){
+ .opening{padding-top:8px}.opening-top{font-size:10px}.motion-canvas:has([data-scene=dna]:not([hidden])){height:760px}
+ .motion-scene[data-scene=dna]{display:block;padding:30px 0}
+ .motion-scene[data-scene=dna] .motion-copy{max-width:285px;position:relative;z-index:3}
+ .opening .motion-copy h1{font-size:clamp(42px,10vw,58px);margin-bottom:20px}
+ .motion-scene[data-scene=dna] .motion-copy>p:not(.motion-overline){max-width:27ch;font-size:13px}
+ .motion-scene[data-scene=dna] .motion-art{top:320px;right:-27%;width:115%;height:90%;max-width:none;margin:0}
+ .motion-showcase:has([data-scene=dna]:not([hidden])) .motion-toolbar{right:0;bottom:110px}
+ .motion-overline{margin-bottom:16px}
+}
+.motion-pause{background:var(--paper)}

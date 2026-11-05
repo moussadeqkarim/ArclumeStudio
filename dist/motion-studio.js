@@ -59,7 +59,7 @@
   async function mount(host) {
     if(host.dataset.mounted)return;host.dataset.mounted='true';
     try {
-      const {createSculpture}=await import('./sculpture-3d.js?v=1');
+      const {createSculpture}=await import('./sculpture-3d.js?v=3');
       const control=createSculpture(host);
       host.addEventListener('sculpture-state',event=>control.setPlaying(event.detail.playing));
       control.setPlaying(host.dataset.playing==='true');
