@@ -15,6 +15,25 @@ export function createSculpture(host) {
   const key=new THREE.DirectionalLight(0xffffff,4);key.position.set(3,4,5);scene.add(key);
   const rim=new THREE.DirectionalLight(0xffe087,3);rim.position.set(-4,-1,2);scene.add(rim);
   const group=new THREE.Group();scene.add(group);
+  const dna=host.dataset.sculpture==='dna';
+  // The hero uses a restrained creative DNA: two polished strands joined by a few quiet nodes.
+  if (dna) {
+    const dnaCurve = side => new THREE.CatmullRomCurve3(Array.from({length:97},(_,i)=>{
+      const t=i/96*Math.PI*4;
+      return new THREE.Vector3(Math.cos(t+side)*1.12,(i/96-.5)*3.25,Math.sin(t+side)*1.12);
+    }));
+    const violet=new THREE.MeshStandardMaterial({color:0x8e59d8,metalness:.3,roughness:.2,envMapIntensity:1.6});
+    const violetLight=new THREE.MeshStandardMaterial({color:0xd7b9ff,metalness:.55,roughness:.16,envMapIntensity:1.8});
+    const strands=[dnaCurve(0),dnaCurve(Math.PI)];
+    strands.forEach((curve,index)=>group.add(new THREE.Mesh(new THREE.TubeGeometry(curve,160,.07,10,false),index?violetLight:violet)));
+    for(let i=0;i<=12;i++) {
+      const t=i/12*Math.PI*4, a=dnaCurve(0).getPointAt(i/12), b=dnaCurve(Math.PI).getPointAt(i/12);
+      const rung=new THREE.Mesh(new THREE.CylinderGeometry(.035,.035,a.distanceTo(b),8),i%2?violet:violetLight);
+      rung.position.copy(a).add(b).multiplyScalar(.5);rung.quaternion.setFromUnitVectors(new THREE.Vector3(0,1,0),b.clone().sub(a).normalize());group.add(rung);
+      const node=new THREE.Mesh(new THREE.SphereGeometry(.105,12,8),i%2?violetLight:violet);node.position.copy(a);group.add(node);node.userData.dnaSide=1;
+      const node2=node.clone();node2.position.copy(b);group.add(node2);
+    }
+  }
   // Closed ribbon with three half twists and a rounded physical cross-section.
   const segments=192,sides=12,positions=[],indices=[];
   for(let i=0;i<=segments;i++) {
@@ -30,17 +49,20 @@ export function createSculpture(host) {
       if(i<segments&&j<sides){const k=i*(sides+1)+j;indices.push(k,k+sides+1,k+1,k+1,k+sides+1,k+sides+2);}
     }
   }
-  const geometry=new THREE.BufferGeometry();geometry.setAttribute('position',new THREE.Float32BufferAttribute(positions,3));geometry.setIndex(indices);geometry.computeVertexNormals();
-  const material=new THREE.MeshStandardMaterial({color:0xe4ce61,metalness:.86,roughness:.22,side:THREE.DoubleSide,envMapIntensity:1.3});
-  const ribbon=new THREE.Mesh(geometry,material);ribbon.rotation.set(.45,-.45,.3);group.add(ribbon);
-  if(dark){const inner=new THREE.Mesh(geometry,new THREE.MeshStandardMaterial({color:0xc7c9c9,metalness:.92,roughness:.18,side:THREE.DoubleSide}));inner.scale.setScalar(.55);inner.rotation.set(-.8,.6,-.3);group.add(inner);}
+  if (!dna) {
+    const geometry=new THREE.BufferGeometry();geometry.setAttribute('position',new THREE.Float32BufferAttribute(positions,3));geometry.setIndex(indices);geometry.computeVertexNormals();
+    const material=new THREE.MeshStandardMaterial({color:0xe4ce61,metalness:.86,roughness:.22,side:THREE.DoubleSide,envMapIntensity:1.3});
+    const ribbon=new THREE.Mesh(geometry,material);ribbon.rotation.set(.45,-.45,.3);group.add(ribbon);
+    if(dark){const inner=new THREE.Mesh(geometry,new THREE.MeshStandardMaterial({color:0xc7c9c9,metalness:.92,roughness:.18,side:THREE.DoubleSide}));inner.scale.setScalar(.55);inner.rotation.set(-.8,.6,-.3);group.add(inner);}
+  }
   let playing=false,frame=0,last=0,time=0,px=0,py=0,tx=0,ty=0;
   Object.defineProperty(host,'motionTime',{get:()=>time});
   function render(now) {
     frame=0;
     if(playing) {
       time+=Math.min((now-last)/1000,.04);last=now;px+=(tx-px)*.04;py+=(ty-py)*.04;
-      group.rotation.set(.2+Math.sin(time*.45)*.2+py,time*.23+px,Math.sin(time*.3)*.12);
+      if (dna) group.rotation.set(.12+Math.sin(time*.45)*.16+py,time*.18+px,Math.sin(time*.3)*.08);
+      else group.rotation.set(.2+Math.sin(time*.45)*.2+py,time*.23+px,Math.sin(time*.3)*.12);
       group.position.y=Math.sin(time*.7)*.10;
       if(dark)group.children[1].rotation.y=-time*.35;
     }

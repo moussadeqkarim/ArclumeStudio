@@ -14,6 +14,18 @@
 .sculpture-stage canvas{display:block;position:absolute;inset:0;width:100%;height:100%;z-index:2;touch-action:pan-y}
 .sculpture-shadow{position:absolute;left:28%;right:28%;height:14px;bottom:8%;border-radius:50%;background:#20211f18;filter:blur(9px);z-index:0}
 .sculpture-caption{position:absolute;left:20px;bottom:8px;color:var(--muted);font-size:10px;letter-spacing:.03em;z-index:3;pointer-events:none}
+.motion-overline{font-size:11px!important;letter-spacing:.12em;text-transform:uppercase;color:#7a4bb7!important;margin-bottom:12px}
+.sculpture-stage-dna{min-height:300px}
+.sculpture-stage-dna canvas{filter:saturate(1.12)}
+.dna-label{position:absolute;z-index:3;color:#7a4bb7;font-size:10px;letter-spacing:.08em;text-transform:uppercase;pointer-events:none}
+.dna-label::before{content:'';display:inline-block;width:22px;height:1px;background:#c1a3e0;vertical-align:middle;margin-right:7px}
+.dna-label-a{right:4%;top:19%}.dna-label-b{left:1%;top:46%}.dna-label-c{right:1%;bottom:22%}
+.dna-fallback{position:absolute;inset:5% 28%;transform-style:preserve-3d;transform:rotateX(8deg) rotateZ(-8deg);animation:sculpture-turn 18s linear infinite;animation-play-state:paused}
+.dna-fallback i{position:absolute;inset:0;border:10px solid #8e59d8;border-radius:50%;transform:rotateY(0) scaleX(.55);box-shadow:0 0 20px #8e59d84d}.dna-fallback i:nth-child(2){transform:rotateY(180deg) scaleX(.55);border-color:#c8a1fb}
+.dna-fallback b{position:absolute;left:10%;right:10%;height:3px;background:#b78be9;top:18%;transform:rotateZ(12deg);box-shadow:0 62px #b78be9,0 124px #b78be9,0 186px #b78be9,0 248px #b78be9}
+[data-renderer=webgl] .dna-fallback{display:none}
+[data-playing=true][data-renderer=fallback] .dna-fallback{animation-play-state:running}
+[data-playing=false] .dna-fallback{animation-play-state:paused}
 .ribbon-fallback{position:absolute;inset:12% 22%;transform-style:preserve-3d;transform:rotateX(45deg) rotateY(-30deg);animation:sculpture-turn 18s linear infinite;animation-play-state:paused}
 .ribbon-fallback i{position:absolute;inset:0;border:26px solid #d4bd53;border-radius:50%;box-shadow:inset 4px 6px 0 #fff7,5px 2px 0 #796822;transform:rotateY(0)}
 .ribbon-fallback i:nth-child(2){transform:rotateY(65deg)}.ribbon-fallback i:nth-child(3){transform:rotateX(65deg)}
@@ -55,4 +67,5 @@
 @media(max-width:360px){.motion-scene{padding:24px 18px;gap:22px}.motion-copy h2{font-size:34px}.motion-select{padding:9px 10px;gap:5px;font-size:11px}.browser-headline{font-size:44px}.motion-canvas{height:600px}}
 @media(prefers-reduced-motion:reduce){.work-type em{transition:none}.browser-study,.campaign-poster,.content-format{transform:none}}
 @media(max-width:760px){.motion-art{perspective:700px}.sculpture-caption{left:0;font-size:9px;bottom:0}.work-live .sculpture-caption{left:18px;bottom:15px;font-size:12px}.work-live{max-height:360px;aspect-ratio:1.25}.ribbon-fallback i{border-width:20px}}
+@media(max-width:760px){.sculpture-stage-dna{min-height:270px}.dna-label{font-size:9px}.dna-label-a{right:0;top:16%}.dna-label-b{left:0;top:45%}.dna-label-c{right:0;bottom:20%}.dna-fallback{inset:6% 27%}}
 @media(prefers-reduced-motion:reduce){.ribbon-fallback{animation:none!important}}
