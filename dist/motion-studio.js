@@ -61,8 +61,10 @@
     if(host.dataset.mounted)return;host.dataset.mounted='true';
     if(host.dataset.sculpture==='hero-ribbon' && reduced.matches){host.dataset.renderer='poster';Object.defineProperty(host,'motionTime',{get:()=>0});return;}
     try {
-      const {createSculpture}=await import('./sculpture-3d.js?v=5');
-      const control=createSculpture(host);
+      const module = host.dataset.sculpture === 'hero-ribbon'
+        ? await import('./hero-ribbon.js?v=2')
+        : await import('./sculpture-3d.js?v=5');
+      const control = host.dataset.sculpture === 'hero-ribbon' ? module.createHeroRibbon(host) : module.createSculpture(host);
       host.addEventListener('sculpture-state',event=>control.setPlaying(event.detail.playing && host.dataset.renderer!=='poster'));
       control.setPlaying(host.dataset.playing==='true');
     } catch(error) { host.dataset.renderer=host.dataset.sculpture==='hero-ribbon'?'poster':'fallback';if(host.dataset.renderer==='poster')host.closest('[data-motion-studio]')?.dispatchEvent(new Event('ribbon-fallback')); }

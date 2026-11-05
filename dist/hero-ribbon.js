@@ -12,7 +12,7 @@ export function createHeroRibbon(host) {
   const room=new THREE.Scene();room.background=new THREE.Color(0xb4acbc);
   function softbox(w,h,x,y,z,power){const panel=new THREE.Mesh(new THREE.PlaneGeometry(w,h),new THREE.MeshBasicMaterial({color:new THREE.Color(power,power,power),side:THREE.DoubleSide}));panel.position.set(x,y,z);panel.lookAt(0,0,0);room.add(panel);}
   softbox(9,5,-4,5,3,4);softbox(1.4,7,4,0,2,2.5);softbox(10,6,0,-5,-3,.35);
-  const pmrem=new THREE.PMREMGenerator(renderer),env=pmrem.fromScene(room,.08);scene.environment=env.texture;
+  const pmrem=new THREE.PMREMGenerator(renderer),env=pmrem.fromScene(room,.035);scene.environment=env.texture;
   room.traverse(o=>{o.geometry?.dispose();o.material?.dispose();});pmrem.dispose();
   const key=new THREE.DirectionalLight(0xffffff,3);key.position.set(-3,5,4);scene.add(key);
   const rim=new THREE.DirectionalLight(0xd6c3f0,1.5);rim.position.set(4,1,-3);scene.add(rim);
@@ -60,10 +60,19 @@ export function createHeroRibbon(host) {
   function resize(){const b=host.getBoundingClientRect();if(!b.width||!b.height)return;renderer.setSize(b.width,b.height,false);camera.aspect=b.width/b.height;camera.position.set(0,.1,camera.aspect<.8?10.5:9);camera.updateProjectionMatrix();if(playing)draw();else renderer.render(scene,camera);}
   new ResizeObserver(resize).observe(host);
   host.addEventListener('pointermove',e=>{if(!playing||e.pointerType==='touch')return;const b=host.getBoundingClientRect();tx=((e.clientX-b.left)/b.width-.5)*.13;ty=((e.clientY-b.top)/b.height-.5)*.08;});host.addEventListener('pointerleave',()=>{tx=ty=0;});
-  const scrollDriver={progress:0};let scrollTween;
-  function onScroll(){const b=host.getBoundingClientRect(),target=THREE.MathUtils.clamp((innerHeight*.5-b.top-b.height*.5)/innerHeight,-1,1);if(window.gsap){scrollTween?.kill();scrollTween=window.gsap.to(scrollDriver,{progress:target,duration:.7,ease:'power2.out',onUpdate:()=>{scrollTarget=scrollDriver.progress;}});}else scrollTarget=target;}
+  let scrollPending=false;
+  function onScroll(){
+    if(scrollPending || !playing)return;
+    scrollPending=true;
+    requestAnimationFrame(()=>{
+      scrollPending=false;
+      if(!playing)return;
+      const b=host.getBoundingClientRect();
+      scrollTarget=THREE.MathUtils.clamp((innerHeight*.5-b.top-b.height*.5)/innerHeight,-1,1);
+    });
+  }
   addEventListener('scroll',onScroll,{passive:true});
-  renderer.domElement.addEventListener('webglcontextlost',e=>{e.preventDefault();playing=false;cancelAnimationFrame(frame);frame=0;host.dataset.renderer='poster';host.dispatchEvent(new Event('ribbon-fallback'));});
+  renderer.domElement.addEventListener('webglcontextlost',e=>{e.preventDefault();playing=false;cancelAnimationFrame(frame);frame=0;host.dataset.renderer='poster';host.dispatchEvent(new Event('ribbon-fallback',{bubbles:true}));});
   renderer.domElement.addEventListener('webglcontextrestored',()=>{host.dataset.renderer='webgl';resize();setPlaying(host.dataset.playing==='true');host.dispatchEvent(new Event('ribbon-fallback',{bubbles:true}));});
   function setPlaying(value){playing=value;if(value){last=performance.now();draw();}else{cancelAnimationFrame(frame);frame=0;}}
   // Read-only review helper: inspect every quarter of the exact same 14s loop.
