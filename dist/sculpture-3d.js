@@ -1,9 +1,9 @@
 import * as THREE from './vendor/three.module.min.js';
 import {RoomEnvironment} from './vendor/RoomEnvironment.js';
-import {createOrganicDNA} from './dna-organic.js?v=1';
+import {createHeroRibbon} from './hero-ribbon.js?v=1';
 
 export function createSculpture(host) {
-  if(host.dataset.sculpture==='dna')return createOrganicDNA(host);
+  if(host.dataset.sculpture==='hero-ribbon')return createHeroRibbon(host);
   const dark=host.dataset.sculpture==='work';
   const renderer=new THREE.WebGLRenderer({alpha:true,antialias:true,powerPreference:'low-power'});
   renderer.setPixelRatio(Math.min(devicePixelRatio,matchMedia('(max-width:760px)').matches?1.25:1.5));

@@ -15,17 +15,6 @@
 .sculpture-shadow{position:absolute;left:28%;right:28%;height:14px;bottom:8%;border-radius:50%;background:#20211f18;filter:blur(9px);z-index:0}
 .sculpture-caption{position:absolute;left:20px;bottom:8px;color:var(--muted);font-size:10px;letter-spacing:.03em;z-index:3;pointer-events:none}
 .motion-overline{font-size:11px!important;letter-spacing:.12em;text-transform:uppercase;color:#7a4bb7!important;margin-bottom:12px}
-.sculpture-stage-dna{min-height:300px}
-.sculpture-stage-dna canvas{filter:saturate(1.12)}
-.dna-label{position:absolute;z-index:3;color:#7a4bb7;font-size:10px;letter-spacing:.08em;text-transform:uppercase;pointer-events:none}
-.dna-label::before{content:'';display:inline-block;width:22px;height:1px;background:#c1a3e0;vertical-align:middle;margin-right:7px}
-.dna-label-a{right:4%;top:19%}.dna-label-b{left:1%;top:46%}.dna-label-c{right:1%;bottom:22%}
-.dna-fallback{position:absolute;inset:5% 28%;transform-style:preserve-3d;transform:rotateX(8deg) rotateZ(-8deg);animation:sculpture-turn 18s linear infinite;animation-play-state:paused}
-.dna-fallback i{position:absolute;inset:0;border:10px solid #8e59d8;border-radius:50%;transform:rotateY(0) scaleX(.55);box-shadow:0 0 20px #8e59d84d}.dna-fallback i:nth-child(2){transform:rotateY(180deg) scaleX(.55);border-color:#c8a1fb}
-.dna-fallback b{position:absolute;left:10%;right:10%;height:3px;background:#b78be9;top:18%;transform:rotateZ(12deg);box-shadow:0 62px #b78be9,0 124px #b78be9,0 186px #b78be9,0 248px #b78be9}
-[data-renderer=webgl] .dna-fallback{display:none}
-[data-playing=true][data-renderer=fallback] .dna-fallback{animation-play-state:running}
-[data-playing=false] .dna-fallback{animation-play-state:paused}
 .ribbon-fallback{position:absolute;inset:12% 22%;transform-style:preserve-3d;transform:rotateX(45deg) rotateY(-30deg);animation:sculpture-turn 18s linear infinite;animation-play-state:paused}
 .ribbon-fallback i{position:absolute;inset:0;border:26px solid #d4bd53;border-radius:50%;box-shadow:inset 4px 6px 0 #fff7,5px 2px 0 #796822;transform:rotateY(0)}
 .ribbon-fallback i:nth-child(2){transform:rotateY(65deg)}.ribbon-fallback i:nth-child(3){transform:rotateX(65deg)}
@@ -67,28 +56,32 @@
 @media(max-width:360px){.motion-scene{padding:24px 18px;gap:22px}.motion-copy h2{font-size:34px}.motion-select{padding:9px 10px;gap:5px;font-size:11px}.browser-headline{font-size:44px}.motion-canvas{height:600px}}
 @media(prefers-reduced-motion:reduce){.work-type em{transition:none}.browser-study,.campaign-poster,.content-format{transform:none}}
 @media(max-width:760px){.motion-art{perspective:700px}.sculpture-caption{left:0;font-size:9px;bottom:0}.work-live .sculpture-caption{left:18px;bottom:15px;font-size:12px}.work-live{max-height:360px;aspect-ratio:1.25}.ribbon-fallback i{border-width:20px}}
-@media(max-width:760px){.sculpture-stage-dna{min-height:270px}.dna-label{font-size:9px}.dna-label-a{right:0;top:16%}.dna-label-b{left:0;top:45%}.dna-label-c{right:0;bottom:20%}.dna-fallback{inset:6% 27%}}
 @media(prefers-reduced-motion:reduce){.ribbon-fallback{animation:none!important}}
-/* Reference direction: an oversized diagonal particle helix, cropped by the hero. */
+/* Studio signature: a restrained glass ribbon within the existing hero composition. */
 .opening{padding-top:20px}.opening .motion-showcase{margin-top:15px}
-.motion-canvas:has([data-scene=dna]:not([hidden])){height:clamp(570px,calc(100svh - 190px),850px);background:var(--paper);border-radius:0}
-.motion-scene[data-scene=dna]{grid-template-columns:.9fr 1.1fr;gap:0;padding:5% 0}
-.motion-scene[data-scene=dna] .motion-copy{max-width:460px}
+.motion-canvas:has([data-scene=ribbon]:not([hidden])){height:clamp(570px,calc(100svh - 190px),850px);background:var(--paper);border-radius:0}
+.motion-scene[data-scene=ribbon]{grid-template-columns:.9fr 1.1fr;gap:0;padding:5% 0}
+.motion-scene[data-scene=ribbon] .motion-copy{max-width:460px}
 .opening .motion-copy h1{font-size:clamp(48px,5.4vw,82px);line-height:1.03;letter-spacing:-.06em;margin-bottom:30px}
-.motion-scene[data-scene=dna] .motion-art{position:absolute;right:-5%;top:-30%;width:67%;height:160%;max-height:none;perspective:none}
-.sculpture-stage-dna{height:100%;min-height:0}
-.sculpture-stage-dna .sculpture-caption,.sculpture-stage-dna .sculpture-shadow,.dna-label{display:none}
-.motion-showcase:has([data-scene=dna]:not([hidden])) .motion-toolbar{position:absolute;right:12px;bottom:110px;z-index:4;margin:0}
-.motion-showcase{position:relative}.motion-showcase:has([data-scene=dna]:not([hidden])) .motion-toolbar>p{display:none}
+.motion-scene[data-scene=ribbon] .motion-art{position:absolute;right:-5%;top:-30%;width:67%;height:160%;max-height:none;perspective:none}
+.motion-showcase:has([data-scene=ribbon]:not([hidden])) .motion-toolbar{position:absolute;right:12px;bottom:110px;z-index:4;margin:0}
+.motion-showcase{position:relative}.motion-showcase:has([data-scene=ribbon]:not([hidden])) .motion-toolbar>p{display:none}
 .motion-overline{color:var(--muted)!important;letter-spacing:.06em;font-size:10px!important;margin-bottom:26px}
 @media(max-width:760px){
- .opening{padding-top:8px}.opening-top{font-size:10px}.motion-canvas:has([data-scene=dna]:not([hidden])){height:760px}
- .motion-scene[data-scene=dna]{display:block;padding:30px 0}
- .motion-scene[data-scene=dna] .motion-copy{max-width:285px;position:relative;z-index:3}
+ .opening{padding-top:8px}.opening-top{font-size:10px}.motion-canvas:has([data-scene=ribbon]:not([hidden])){height:760px}
+ .motion-scene[data-scene=ribbon]{display:block;padding:30px 0}
+ .motion-scene[data-scene=ribbon] .motion-copy{max-width:285px;position:relative;z-index:3}
  .opening .motion-copy h1{font-size:clamp(42px,10vw,58px);margin-bottom:20px}
- .motion-scene[data-scene=dna] .motion-copy>p:not(.motion-overline){max-width:27ch;font-size:13px}
- .motion-scene[data-scene=dna] .motion-art{top:320px;right:-27%;width:115%;height:90%;max-width:none;margin:0}
- .motion-showcase:has([data-scene=dna]:not([hidden])) .motion-toolbar{right:0;bottom:110px}
+ .motion-scene[data-scene=ribbon] .motion-copy>p:not(.motion-overline){max-width:27ch;font-size:13px}
+ .motion-scene[data-scene=ribbon] .motion-art{top:320px;right:-27%;width:115%;height:90%;max-width:none;margin:0}
+ .motion-showcase:has([data-scene=ribbon]:not([hidden])) .motion-toolbar{right:0;bottom:110px}
  .motion-overline{margin-bottom:16px}
 }
 .motion-pause{background:var(--paper)}
+.sculpture-stage-ribbon{height:100%;min-height:0}
+.hero-ribbon-poster{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;pointer-events:none}
+[data-renderer=webgl] .hero-ribbon-poster{visibility:hidden}
+[data-renderer=poster] canvas{visibility:hidden}
+.motion-scene[data-scene=ribbon] .motion-art{right:-3%;top:0;width:61%;height:100%}
+.sculpture-stage-ribbon .sculpture-shadow,.sculpture-stage-ribbon .sculpture-caption{display:none}
+@media(max-width:760px){.motion-scene[data-scene=ribbon] .motion-art{top:300px;right:-6%;width:106%;height:430px;max-height:none}}

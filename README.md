@@ -14,13 +14,13 @@ Open http://localhost:5173.
 
 ## Live motion
 
-`dist/motion-studio.js` controls playback for the service showcase and the independent work preview. GSAP drives the continuously moving campaign and content layers; `dist/sculpture-3d.js` renders original reflective ribbon geometry using the self-hosted Three.js 0.170.0 core. Engine files and licenses are in `dist/vendor`.
+`dist/motion-studio.js` controls playback for the service showcase and the independent work preview. GSAP drives the campaign/content layers and smooths hero scroll input. `dist/sculpture-3d.js` routes the new hero to `dist/hero-ribbon.js`; the independent work preview retains its own renderer. Engine files and licenses are in `dist/vendor`.
 
-The 3D engine loads when a preview approaches the viewport. Rendering stops offscreen, in background tabs and when paused. Mobile pixel density is capped at 1.25. Reduced-motion visitors receive a rendered still; a CSS 3D fallback covers browsers without WebGL. Selecting a service preserves the visitor’s playback preference.
+The 3D engine loads when a preview approaches the viewport. Rendering stops offscreen, in background tabs and when paused. Hero mobile pixel density is capped at 1.5. Reduced-motion visitors get a still from the actual final ribbon render, without loading the hero WebGL scene. The same poster is visible without JavaScript or WebGL. Selecting a service preserves the visitor’s playback preference.
 
-The opening composition follows the supplied DNA motion reference. `dist/dna-organic.js` builds a deterministic organic double helix from variable-width strands, noise-cut translucent membranes, branching filaments and clustered particle volume. It uses no wireframe surface. Depth changes the opacity, color and softness, with 52,000 particles on desktop and 26,000 on mobile. The motion is a slow turn with very small local deformation; pause freezes all shader and geometry motion. Existing hero layout and text are preserved.
+The hero is a completely new open sculptural glass band with an asymmetric V-like fold. Its original surface and twist deform on an exact 14-second periodic cycle, with restrained cursor perspective and scroll positioning. Closed tapered tips and smoothed surface seams catch a custom three-panel studio environment. The glass uses physical transmission, soft refraction, violet absorption and a subtle lavender rim. The previous DNA geometry and particles are removed.
 
-`node scripts/test-motion-browser.cjs` runs browser regression checks for continuous rendering, exact pause/resume, both motion controls, responsive widths, reduced motion and the no-WebGL fallback. It requires Playwright with Chromium available. An existing installation can be supplied through `PLAYWRIGHT_MODULE`; `PLAYWRIGHT_CHANNEL=chrome` selects installed Chrome. Screenshots go to the system temporary directory, or `MOTION_REVIEW_DIR` if supplied.
+`node scripts/test-motion-browser.cjs` checks the 14-second loop closure, four phase screenshots, cursor/scroll views, pause/resume, both motion controls, responsive widths, reduced motion, and no-WebGL/no-JS posters. It requires Playwright with Chromium available. An existing installation can be supplied through `PLAYWRIGHT_MODULE`; `PLAYWRIGHT_CHANNEL=chrome` selects installed Chrome. Screenshots go to the system temporary directory, or `MOTION_REVIEW_DIR` if supplied.
 
 ## Configure contact and social profiles
 

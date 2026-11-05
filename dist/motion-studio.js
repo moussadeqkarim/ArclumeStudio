@@ -10,7 +10,7 @@
     function sync() {
       const running = wanted && visible && !document.hidden && !reduced.matches;
       root.dataset.playing = String(running);
-      button.hidden = reduced.matches;
+      button.hidden = reduced.matches || !!root.querySelector('.motion-scene:not([hidden]) [data-renderer=poster]');
       button.textContent = wanted ? 'Pause motion' : 'Play motion';
       button.setAttribute('aria-pressed',String(!wanted));
       update(running);
@@ -49,6 +49,7 @@
       current=index;buildLoop();sync();
     }));
     studio.classList.add('is-enhanced');
+    studio.addEventListener('ribbon-fallback',sync);
   });
   document.querySelectorAll('[data-work-motion]').forEach(work => {
     playback(work,work.querySelector('.work-motion-pause'),running => sculptureState(work.querySelector('[data-sculpture]'),running));
@@ -58,12 +59,13 @@
   },{rootMargin:'100px'}) : null;
   async function mount(host) {
     if(host.dataset.mounted)return;host.dataset.mounted='true';
+    if(host.dataset.sculpture==='hero-ribbon' && reduced.matches){host.dataset.renderer='poster';Object.defineProperty(host,'motionTime',{get:()=>0});return;}
     try {
-      const {createSculpture}=await import('./sculpture-3d.js?v=4');
+      const {createSculpture}=await import('./sculpture-3d.js?v=5');
       const control=createSculpture(host);
-      host.addEventListener('sculpture-state',event=>control.setPlaying(event.detail.playing));
+      host.addEventListener('sculpture-state',event=>control.setPlaying(event.detail.playing && host.dataset.renderer!=='poster'));
       control.setPlaying(host.dataset.playing==='true');
-    } catch(error) { host.dataset.renderer='fallback'; }
+    } catch(error) { host.dataset.renderer=host.dataset.sculpture==='hero-ribbon'?'poster':'fallback';if(host.dataset.renderer==='poster')host.closest('[data-motion-studio]')?.dispatchEvent(new Event('ribbon-fallback')); }
   }
   document.querySelectorAll('[data-sculpture]').forEach(host=>observer?observer.observe(host):mount(host));
 })();
