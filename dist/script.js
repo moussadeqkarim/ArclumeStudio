@@ -82,18 +82,37 @@ document.querySelectorAll('[data-social]').forEach(element => {
 document.querySelectorAll('[data-policy-contact]').forEach(element => {
   if (studioEmail) { const link = document.createElement('a'); link.href = `mailto:${studioEmail}`; link.textContent = studioEmail; element.replaceChildren(link); }
 });
-const contactDialog = document.getElementById('contact-dialog');
 const projectDialog = document.getElementById('project-dialog');
+const schedulerDialog = document.getElementById('scheduler-dialog');
+const schedulerFrame = document.getElementById('scheduler-frame');
+const schedulerStatus = document.getElementById('scheduler-status');
+const schedulerLink = document.getElementById('scheduler-link');
+let bookingUrl;
+try {
+  const url = new URL(config.calendlyUrl);
+  if (url.protocol === 'https:' && url.hostname === 'calendly.com' && !url.username && !url.password) bookingUrl = url;
+} catch { /* Missing or invalid configuration leaves booking unavailable. */ }
+if (schedulerLink && bookingUrl) schedulerLink.href = bookingUrl.href;
 let lastTrigger;
 function openDialog(dialog, trigger) {
   if (!dialog) return;
   document.querySelectorAll('dialog[open]').forEach(open => open.close());
   lastTrigger = trigger; dialog.showModal();
 }
-document.querySelectorAll('[data-contact]').forEach(button => button.addEventListener('click', () => {
-  if (button.dataset.service) document.getElementById('brief-form').elements.service.value = button.dataset.service;
-  openDialog(contactDialog, button);
-}));
+function openScheduler(trigger) {
+  if (!schedulerDialog || !bookingUrl) return;
+  openDialog(schedulerDialog, trigger);
+  if (!schedulerFrame || schedulerFrame.getAttribute('src')) return;
+  const url = new URL(bookingUrl.href);
+  url.searchParams.set('embed_domain', window.location.hostname);
+  url.searchParams.set('embed_type', 'Inline');
+  if (schedulerStatus) schedulerStatus.textContent = 'Loading available times…';
+  schedulerFrame.src = url.href;
+}
+document.querySelectorAll('[data-schedule]').forEach(button => button.addEventListener('click', () => openScheduler(button)));
+if (schedulerFrame) schedulerFrame.addEventListener('load', () => {
+  if (schedulerStatus) schedulerStatus.textContent = 'Select a date and time below. If the calendar does not appear, use the booking link.';
+});
 const projects = {
   beverage: { title: 'Golden hour.', image: 'assets/espresso-concept.jpg', alt: 'Iced espresso on a yellow pedestal in an independent beverage concept', description: 'A familiar ritual, made a little extraordinary. Amber coffee, cold glass and a suspended droplet turn an everyday drink into a moment worth pausing for. An independent concept exploring product storytelling for food, drink and hospitality brands.', discipline: 'Beverage / Product art direction' },
   expression: { title: 'In good form.', image: 'assets/yellow-satin.png', alt: 'Expressive yellow satin material study', description: 'A study in colour, texture and movement. One expressive material becomes the starting point for a distinctive visual world. An independent art direction experiment, open to many kinds of brands.', discipline: 'Brand art direction' },
@@ -110,5 +129,5 @@ document.querySelectorAll('[data-project]').forEach(button => button.addEventLis
 document.querySelectorAll('dialog').forEach(dialog => {
   dialog.querySelector('[data-close]').addEventListener('click', () => dialog.close());
   dialog.addEventListener('click', event => { if (event.target === dialog) { const rect = dialog.getBoundingClientRect(); if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) dialog.close(); } });
-  dialog.addEventListener('close', () => { if (!document.querySelector('dialog[open]') && lastTrigger?.isConnected) { if (!lastTrigger.closest('dialog:not([open])')) lastTrigger.focus(); else document.querySelector('.nav-contact')?.focus(); } });
+  dialog.addEventListener('close', () => { if (!document.querySelector('dialog[open]') && lastTrigger?.isConnected) lastTrigger.focus(); });
 });

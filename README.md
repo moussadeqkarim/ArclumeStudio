@@ -18,21 +18,19 @@ The homepage and web-work page now use five clean static images based on the sup
 
 High-resolution PNG masters and the built-in imagegen prompt set are in design-assets/reference-masters/. Quality-94 JPEG delivery files, with 640px and 960px responsive variants, are in dist/assets/references/. The generated sources range from 1498 to 1672 pixels wide. Reconstruction creates new fine detail rather than recovering original source pixels.
 
-Neither page loads the 3D renderer, GSAP, video previews or playback controls. Images preserve their complete compositions and declared dimensions; lower-page images load lazily. Existing inquiry, service and mobile navigation interactions remain available. The client-work page retains the actual Sokoune collection.
+Neither page loads the 3D renderer, GSAP, video previews or playback controls. Images preserve their complete compositions and declared dimensions; lower-page images load lazily. Calendly scheduling, service and mobile navigation interactions remain available. The client-work page retains the actual Sokoune collection.
 
 ## Configure contact and social profiles
 
-The project form now uses a direct inquiry flow. Follow [INQUIRY-SETUP.md](INQUIRY-SETUP.md) to connect Formspree, configure validation and spam filtering, and verify delivery. In `dist/config.js`, `inquiryEndpoint` enables submission and `contactEmail` provides a direct-email fallback. Until the endpoint is configured, sending stays disabled. No live endpoint has been supplied yet. Never put private credentials in public configuration.
+The website uses a Calendly-only booking flow. Follow [INQUIRY-SETUP.md](INQUIRY-SETUP.md) to verify the event URL, availability and embedded/fallback booking paths. Public settings live in `dist/config.js`; never put private credentials in that file.
 
-Use full HTTPS social profile URLs. Empty profiles remain Coming soon text.
+The footer currently links only to the supplied Instagram profile. Add another social profile only when its exact HTTPS URL is confirmed.
 
 ## Files
 
 - `dist/index.html`: homepage and dialogs.
 - `dist/styles.css`, `agency.css`, `refinement.css`: shared, agency and latest visual styling.
-- `dist/script.js`: navigation, project dialogs, services and motion controls.
-- `dist/inquiry.js`: inquiry validation, submission, success and retry states.
-- `scripts/test-inquiry.mjs`: local submission behavior tests with mocked responses.
+- `dist/script.js`: navigation, project dialogs, services, social links, motion controls and lazy Calendly scheduling.
 - `scripts/create-policy-pages.mjs`: generates policy pages; run with modern Node.js after changing policy copy or the shared footer.
 - `WEBSITE-HANDOFF.md`: functionality and remaining owner inputs.
 - `NAMING-NOTES.md`: preliminary replacement-name research.
