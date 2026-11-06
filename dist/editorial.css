@@ -78,7 +78,7 @@
 .portfolio-home .round-action{display:inline-flex;justify-content:center;align-items:center;gap:18px;width:auto;height:auto;min-height:54px;border-radius:99px;padding:16px 26px;font-size:15px;margin-bottom:7px}
 .portfolio-home .round-action-copy{display:inline}.portfolio-home .round-action .arrow-icon{width:18px;height:18px;flex-basis:18px}
 .portfolio-home .round-action:hover{transform:none}.portfolio-home .closing>p:last-child{font-size:17px}
-.portfolio-home .footer-column{font-size:14px;gap:8px}.portfolio-home .footer-column a,.portfolio-home .footer-column button{min-height:36px;display:inline-flex;align-items:center;font-size:14px}
+.portfolio-home .footer-column{font-size:14px;gap:8px}.portfolio-home .footer-column a,.portfolio-home .footer-column button{min-height:36px;display:inline-flex;align-items:center;font-size:14px}.portfolio-home .footer-email{display:inline-block;font-size:14px;margin-top:18px;color:var(--ink);text-decoration:none}.portfolio-home .footer-email:hover{text-decoration:underline}.portfolio-home .footer-brand>small{display:block;max-width:220px;margin-top:7px;color:var(--muted);font-size:11px;line-height:1.5}
 .client-project-context{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;padding:36px 40px;border-top:1px solid var(--line);background:var(--paper)}
 .client-project-context h3{font-size:18px;letter-spacing:-.025em;margin-bottom:12px}.client-project-context p{font-size:15px;line-height:1.65;color:var(--muted)}
 .client-project-context .text-action{font-size:14px;margin-top:12px}

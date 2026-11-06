@@ -12,7 +12,7 @@ document.querySelector('.reel-toggle')?.addEventListener('click', event => {
   const button = event.currentTarget; const paused = button.closest('.reel-panel').classList.toggle('is-paused');
   button.setAttribute('aria-pressed', String(paused)); button.textContent = paused ? 'Resume motion ▷' : 'Pause motion Ⅱ';
 });
-const serviceNames = ['Cinematic or story-driven ad', 'Social media marketing', 'Brand or campaign direction', 'Content production', 'Web development'];
+const serviceNames = ['Cinematic or story-driven ad', 'Social media marketing', 'Brand or campaign direction', 'Content production', 'Website or landing page'];
 const serviceDetails = [...document.querySelectorAll('.service-list > details')];
 serviceDetails.forEach(detail => detail.addEventListener('toggle', () => {
   if (!detail.open) return;
@@ -22,7 +22,8 @@ serviceDetails.forEach(detail => detail.addEventListener('toggle', () => {
 }));
 document.querySelectorAll('.service-body').forEach((body, index) => {
   const button = document.createElement('button'); button.className = 'service-cta'; button.type = 'button';
-  button.dataset.contact = ''; button.dataset.service = serviceNames[index];
+  button.dataset.schedule = ''; button.dataset.service = serviceNames[index];
+  button.setAttribute('aria-label', `Discuss ${serviceNames[index]} on a discovery call`);
   button.append(document.createTextNode('Discuss this service '));
   const arrow = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
   arrow.setAttribute('class', 'arrow-icon'); arrow.setAttribute('viewBox', '0 0 16 16'); arrow.setAttribute('fill', 'none'); arrow.setAttribute('aria-hidden', 'true');
@@ -87,6 +88,7 @@ const schedulerDialog = document.getElementById('scheduler-dialog');
 const schedulerFrame = document.getElementById('scheduler-frame');
 const schedulerStatus = document.getElementById('scheduler-status');
 const schedulerLink = document.getElementById('scheduler-link');
+const schedulerService = document.getElementById('scheduler-service');
 let bookingUrl;
 try {
   const url = new URL(config.calendlyUrl);
@@ -102,6 +104,11 @@ function openDialog(dialog, trigger) {
 function openScheduler(trigger) {
   if (!schedulerDialog || !bookingUrl) return;
   openDialog(schedulerDialog, trigger);
+  const service = trigger?.dataset.service?.trim();
+  if (schedulerService) {
+    schedulerService.textContent = service ? `Booking about: ${service}` : '';
+    schedulerService.hidden = !service;
+  }
   if (!schedulerFrame || schedulerFrame.getAttribute('src')) return;
   const url = new URL(bookingUrl.href);
   url.searchParams.set('embed_domain', window.location.hostname);
